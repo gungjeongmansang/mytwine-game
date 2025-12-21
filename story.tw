@@ -27,16 +27,16 @@
 하지만, 그 결말은 오직 당신만이 정할 수 있습니다.
 당신의 선택으로 세상을 바꿔나가세요.
 
-[[계속->Setup]]
+[[계속->Setup_Difficultylevel]]
 
-:: Setup
+:: Setup_Difficultylevel
 <<set $difficulty = "">>
 
 <h2 style="margin:0;">초기 설정</h2>
 <h3 style="margin:0;">입궁 품계</h3>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$difficulty" "easy">> 빈으로 입궁
+<<radiobutton "$difficulty" "veryeasy">> 빈으로 입궁
 </label>
 
 <p
@@ -55,7 +55,7 @@
 </p>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$difficulty" "normal">> 보통
+<<radiobutton "$difficulty" "easy">> 귀인으로 입궁
 </label>
 
 <p
@@ -66,12 +66,14 @@
     line-height:1.2;
   "
 >
-개발자가 의도한 기본 난이도입니다.
-선택의 결과가 명확히 갈립니다.
+당신은 이번 수녀 선발로 황제의 후궁이 되었습니다.
+당신의 기품과 미모에 황궁의 웃어른은 물론이고 황제 또한 당신을 마음에 들어했습니다.
+비록 황궁 내에 권력은 없으나, 권력은 손에 쥐면 그만인 일입니다.
+당신의 친정 가문은 당신이 황제의 총애를 받길 바라지만, 당신이 위험에 처하지 않는 것이 우선입니다.
 </p>
 
 <label style="display:block; margin:0; line-height:1;">
-<<radiobutton "$difficulty" "hard">> 어려움
+<<radiobutton "$difficulty" "normal">> 어려움
 </label>
 
 <p
@@ -82,16 +84,118 @@
     line-height:1.2;
   "
 >
-적의 행동이 더 치밀해지며
-잘못된 선택은 치명적인 결과를 낳습니다.
+당신은 이번 수녀 선발로 황제의 후궁이 되었습니다.
+당신은 수녀 선발 제도에 의해 어쩔 수 없이 가문을 대표하여 참여했고, 그 결과 평범하게 후궁이 되었습니다.
+권력을 앞세우기 전에 살 방법부터 찾는 것이 먼저일 만큼, 당신은 바람 앞의 촛불과도 같습니다.
+당신의 친정 가문은 한미하여 당신에게 도움을 줄 순 없으나, 당신이 도와줄 만큼 가난에 허덕이진 않습니다.
+</p>
+<label style="display:block; margin:0; line-height:1;">
+<<radiobutton "$difficulty" "hard">> 답응으로 입궁
+</label>
+
+<p
+  style="
+    margin:0 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+당신은 이번 수녀 선발로 황제의 후궁이 되었습니다.
+당신의 한미한 가문을 살리기 위해서라면 가문을 대표에 후궁이 되는 길 외엔 방법이 없었습니다.
+도움을 받을 구석이 없는 당신에겐 황제의 총애만이 살 길입니다.
+</p>
+<label style="display:block; margin:0; line-height:1;">
+<<radiobutton "$difficulty" "veryhard">> 관여자로 입궁
+</label>
+
+<p
+  style="
+    margin:0 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+당신은 황궁의 궁녀였으나, 황제의 승은을 입어 상궁이 되었습니다.
+허나 이 황궁 내에는 황제 폐하의 하룻밤 승은을 입어 관여자가 된 이가 한두 명이 아닙니다.
+보잘것없는 후궁의 삶보다 더 볼품없는 황제의 하룻밤 상대로서, 당신은 배정된 궁조차 없습니다.
 </p>
 
 <br>
-[[설정 완료->route_select]]
+[[설정 완료->Setup_StartPalace]]
 
-:: route_select
-어디로 갈까?
 
-[[연경 루트로 간다->yyk]]
+:: Setup_StartPalace
 
-[[궁궐로 간다->PalaceHub]]
+<<set $my_palace = "">>
+
+<h2 style="margin:0;">초기 설정</h2>
+<h3 style="margin:0;">입궁 거처</h3>
+
+<label style="display:block; margin:0; line-height:1;">
+<<radiobutton "$my_palace" "naniegung">> 난의궁으로 입궁
+</label>
+
+<p
+  style="
+    margin:0 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+난의궁은 어화원과 맞닿아 있어 담벼락 너머로도 아름다운 풍경을 구경할 수 있는 곳입니다. 
+비록 황궁의 중심에서 살짝 비켜난 위치이나, 어화원으로 산책하는 이들이 많은 덕에 들리는 소문도 자연히 많은 곳입니다.
+황제의 침전인 양심전과도 그리 멀지 않은 곳에 위치해 있습니다. 
+
+황제의 후궁으로 이제 막 입궁하게 된 당신이 난의궁에 머무르게 된다면, 황제를 마주칠 기회도 꽤 많을 뿐더러 다른 후궁들의 과한 견제도 받지 않을 것입니다. 
+황실의 규율과 예법에 미숙하다면 난의궁을 거처로 삼아, 어화원 주위를 거닐며 다양한 정보를 들을 수 있습니다. 
+다만, 바로 위의 북문은 도성이 폭우에 침수되거나 극심한 가뭄이 이어지지 않는 한 열리지 않아 외부 출입이 쉽지 않습니다.
+</p>
+
+<label style="display:block; margin:0; line-height:1;">
+<<radiobutton "$my_palace" "yeonhuigung">> 연희궁으로 입궁
+</label>
+
+<p
+  style="
+    margin:0 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+연희궁은 황궁 내의 모든 물자들, 궁녀와 태감을 비롯한 궁인들이 오가는 동문과 가장 가까운 궁입니다.
+늘 사람의 발길이 끊이지 않으며, 그 때문에 특히 황손을 양육 중인 후궁은 연희궁에 기거하기를 꺼립니다. 
+동문에 인접한 궁에는 총애를 받는 후궁이 많지 않습니다. 덕분에 당신 역시 견제를 받지 않지만, 황제의 관심 또한 쉽게 받지 못합니다.
+
+황제의 후궁으로 입궁하게 된 당신에게 있어, 연희궁에서의 생활은 꽤나 자유로울 것입니다.
+황제가 당신에게 관심을 주지 않는다면 당신이 언제 동문으로 나가든 그 누구도 모를 것입니다.
+어쩔 수 없이 입궁하게 된 후궁의 생활이 아닌 다른 신분으로서의 생활을 꿈꾼다면, 이곳에서의 시작은 기회일지도 모릅니다. 
+</p>
+
+<label style="display:block; margin:0; line-height:1;">
+<<radiobutton "$my_palace" "jeonghwagung">> 어려움
+</label>
+
+<p
+  style="
+    margin:0 0 6px 1.2em;
+    padding-left:0.6em;
+    border-left:2px solid #ccc;
+    line-height:1.2;
+  "
+>
+정화궁은 황제의 침전인 양심전과 가까운 궁 중 하나로, 인접한 익곤궁에는 황가의 장자를 기르는 후궁이 거처하고 있습니다.
+서문과 인접한 궁에는 총애를 받는 후궁이 많아, 웃전들에게서 배울 점도 많을 것입니다. 
+이곳에서는 황제를 마주칠 기회가 비교적 잦으며, 그에 따른 궁 안의 주목도 또한 자연히 상승하게 됩니다.
+
+후궁으로 입궁한 당신이 정화궁에 머문다면, 황제와 마주치기 쉽습니다.
+그러나, 그만큼 다른 후궁들의 견제와 주목을 받게 될 것입니다. 당신의 사소한 언행 하나하나가 도마 위에 오르게 됩니다.
+그럼에도 황제의 총애를, 황제로부터 나오는 권력을 원하고 바란다면.
+이제 막 입궁한 당신에게 있어 정화궁만한 선택지는 없을 것입니다. 
+</p>
+
+<br>
+[[<<$my_palace>>에 들어선다->PalaceHub]]
