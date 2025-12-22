@@ -41,7 +41,7 @@ window.doLogin = function () {
   formData.append("id", id);
   formData.append("pw", pw);
 
-  fetch("http://localhost:8080/mytwine-server/login.jsp", {
+  fetch("http://localhost/mytwine-server/login.jsp", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
