@@ -353,6 +353,18 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 	[[계속-&gt;Login]]
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="Login" tags="" position="850,350" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
 
+&lt;&lt;script&gt;&gt;
+(function () {
+	// GitHub Pages 환경이면 로그인 자동 통과
+	if (location.hostname.includes(&quot;github.io&quot;)) {
+		State.variables.isLogin = true;
+		Engine.play(&quot;MainMenu&quot;);
+	}
+})();
+&lt;&lt;/script&gt;&gt;
+
+&lt;&lt;if not location.hostname.includes(&quot;github.io&quot;)&gt;&gt;
+
 아이디와 비밀번호를 입력하세요.&lt;br&gt;&lt;br&gt;
 
 &lt;input id=&quot;login_id&quot; placeholder=&quot;ID&quot;&gt;&lt;br&gt;
@@ -362,8 +374,23 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 [[회원가입-&gt;Signup]]
 
+&lt;&lt;else&gt;&gt;
+
+&lt;p style=&quot;opacity:0.7;&quot;&gt;
+GitHub Pages에서는 서버 기능이 제공되지 않아&lt;br&gt;
+로그인 없이 게임이 진행됩니다.
+&lt;/p&gt;
+
+&lt;&lt;/if&gt;&gt;
+
 &lt;&lt;script&gt;&gt;
 window.doLogin = function () {
+
+	// Pages에서는 절대 서버 호출 안 함
+	if (location.hostname.includes(&quot;github.io&quot;)) {
+		return;
+	}
+
 	const id = document.getElementById(&quot;login_id&quot;).value.trim();
 	const pw = document.getElementById(&quot;login_pw&quot;).value.trim();
 
@@ -372,7 +399,6 @@ window.doLogin = function () {
 		return;
 	}
 
-	// 핵심: 상대경로 + POST
 	fetch(&quot;/myTwine/login.jsp&quot;, {
 		method: &quot;POST&quot;,
 		headers: {
@@ -381,9 +407,7 @@ window.doLogin = function () {
 		body: &quot;id=&quot; + encodeURIComponent(id) + &quot;&amp;pw=&quot; + encodeURIComponent(pw)
 	})
 	.then(res =&gt; {
-		if (!res.ok) {
-			throw new Error(&quot;HTTP status &quot; + res.status);
-		}
+		if (!res.ok) throw new Error(&quot;HTTP &quot; + res.status);
 		return res.json();
 	})
 	.then(data =&gt; {
@@ -394,9 +418,8 @@ window.doLogin = function () {
 			alert(&quot;로그인 실패&quot;);
 		}
 	})
-	.catch(err =&gt; {
+	.catch(() =&gt; {
 		alert(&quot;서버 연결 실패&quot;);
-		console.error(err);
 	});
 };
 &lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="Signup" tags="" position="975,350" size="100,100">회원가입 기능은 추후 구현 예정입니다.
@@ -408,12 +431,12 @@ window.doLogin = function () {
 [[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="31" name="ContinueCheck" tags="" position="100,475" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
 	[[이어하기-&gt;LoadGame]]
 &lt;&lt;else&gt;&gt;
-	저장된 데이터가 없습니다.
-	자동으로 새 게임을 시작합니다.&lt;br&gt;
+	저장된 데이터가 없습니다.&lt;br&gt;
+	자동으로 새 게임을 시작합니다.&lt;br&gt;&lt;br&gt;
 	[[시작-&gt;prologue]]
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="LoadGame" tags="" position="225,475" size="100,100">&lt;&lt;script&gt;&gt;
 /*
-다음 단계에서 구현 예정:
+서버 구현 예정:
 
 fetch(&quot;/myTwine/loadGame.jsp&quot;)
   .then(res =&gt; res.json())
