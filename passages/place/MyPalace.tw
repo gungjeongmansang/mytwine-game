@@ -1,3 +1,18 @@
+$(document).on('keydown', function (e) {
+  if ($(e.target).is('input, textarea')) return;
+
+  const key = e.key;
+  if (key >= '1' && key <= '9') {
+    const idx = Number(key) - 1;
+    const choice = $('.choice-item').eq(idx);
+
+    if (choice.length) {
+      Engine.play(choice.data('target'));
+    }
+  }
+});
+
+
 :: MyPalace
 
 당신은 <<print $my_palace>>에 도착했습니다. 
@@ -24,13 +39,18 @@
   { text: "외관을 확인한다", target: "Mirror_Outer" }
 ]>>
 
-<div class="choice-list">
+<ul class="choice-list">
 <<for _i, _c range $choices>>
-  <div class="choice-item" data-index="<<print _i>>" data-target="<<print _c.target>>">
-    (<<print _i + 1>>) _c.text
-  </div>
+  <li>
+    <a href="javascript:void(0)"
+       class="choice-item"
+       data-index="<<print _i>>"
+       data-target="<<print _c.target>>">
+      (<<print _i + 1>>) _c.text
+    </a>
+  </li>
 <</for>>
-</div>
+</ul>
 
 
 
