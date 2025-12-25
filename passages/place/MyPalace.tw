@@ -17,19 +17,21 @@
 
 <<set $choices = [
   { text: "내실로 향한다", target: "InnerPalace_Front" },
-  { text: "입구로 향한다", target: "MyPalace" },
+  { text: "입구로 향한다", target: "FrontPalace" },
   { text: "여가 시간을 보낸다", target: "Hobby" },
   { text: "누군가를 초대한다", target: "Invite" },
   { text: "식사를 한다", target: "Eat" },
   { text: "외관을 확인한다", target: "Mirror_Outer" }
 ]>>
 
+<div class="choice-list">
 <<for _i, _c range $choices>>
-(<<print _i + 1>>)
-<<link _c.text>>
-  <<goto _c.target>>
-<</link>>
+  <div class="choice-item" data-index="<<print _i>>" data-target="<<print _c.target>>">
+    (<<print _i + 1>>) _c.text
+  </div>
 <</for>>
+</div>
+
 
 
 
@@ -37,8 +39,17 @@
 
 무엇을 하며 시간을 보낼까?
 
+:: Invite
 
+누구 초대할
 
+:: Eat
+
+맘마
+
+:: Mirror_Outer
+
+거울아거울아
 
 :: InnerPalace_Front
 
