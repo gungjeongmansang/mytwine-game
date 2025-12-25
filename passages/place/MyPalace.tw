@@ -1,8 +1,8 @@
 :: MyPalace
 
-:: InnerPalace_Back
-:: OuterPalace_Back
-:: outside
+당신은 <<print $my_palace>>에 도착했습니다. 
+
+[[다음->FrontPalace]]
 
 :: FrontPalace
 
@@ -93,3 +93,6 @@
 
 
 [[아침이 밝아온다->PalaceHub]]
+:: InnerPalace_Back
+:: OuterPalace_Back
+:: outside
