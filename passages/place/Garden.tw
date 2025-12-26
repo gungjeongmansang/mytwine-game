@@ -1,6 +1,6 @@
 /* 1. 정원을 거닌다 */
-:: Garden
 
+:: Garden
 정원이다.
 
 (1) [[조용히 산책한다->GardenWalk]]
@@ -8,23 +8,22 @@
 (3) [[궁궐로 돌아간다->PalaceHub]]
 
 :: GardenWalk
+<<set _roll = random(1, 100)>>
 
-<<set _roll = random(1, 5)>>
-
-<<switch _roll>>
-<<case 1>>
-    <<goto "GardenEvent_1">>
-<<case 2>>
-    <<goto "GardenEvent_2">>
-<<case 3>>
-    <<goto "GardenEvent_3">>
-<<case 4>>
-    <<goto "GardenEvent_4">>
-<<case 5>>
-    <<goto "GardenEvent_5">>
-<</switch>>
+<<if _roll <= 50>>
+	<<goto "GardenEvent_1">>   /* 50% */
+<<elseif _roll <= 80>>
+	<<goto "GardenEvent_2">>   /* 30% */
+<<elseif _roll <= 90>>
+	<<goto "GardenEvent_3">>   /* 10% */
+<<elseif _roll <= 95>>
+	<<goto "GardenEvent_4">>   /* 5% */
+<<else>>
+	<<goto "GardenEvent_5">>   /* 5% */
+<</if>>
 
 :: GardenRest
+연못가에 앉아 쉰다.  
+잠시 시간을 보낸다.
 
-앉아서 쉰다.
 (1) [[이만 돌아간다->PalaceHub]]
