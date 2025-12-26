@@ -1,21 +1,11 @@
-:: StoryInterface
-<div id="ui-bar" style="
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 220px;
-	height: 100%;
-	background: #111;
-	color: #ccc;
-	padding: 12px;
-	box-sizing: border-box;
-	font-size: 0.9em;
+:: StoryCaption
+<span style="
+	font-size: 0.85em;
+	color: #888;
 ">
-	<b>시간</b><br><br>
-	Day <<print $day>><br>
-	<<print $hour>>:<<print String($minute).padStart(2,"0")>><br>
+	Day <<print $day>>
+	｜
+	<<print $hour>>:<<print String($minute).padStart(2,"0")>>
+	｜
 	<<print $season>>
-</div>
-
-<!-- 이게 없으면 게임이 안 켜짐 -->
-<div id="passages" style="margin-left:220px;"></div>
+</span>
