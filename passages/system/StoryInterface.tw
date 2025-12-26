@@ -1,21 +1,20 @@
-:: StoryStylesheet [stylesheet]
-#left-info {
-	position: fixed;
-	left: 10px;
-	top: 80px;
-	width: 200px;
-	padding: 10px;
-	background: rgba(0,0,0,0.6);
-	color: #ccc;
-	font-size: 0.8em;
-	border: 1px solid #333;
-	z-index: 1000;
-}
+:: StoryCaption
+<script>
+(function () {
+	const ui = document.getElementById("ui-bar");
+	if (!ui || document.getElementById("time-panel")) return;
 
-:: StoryAuthor
-<div>
-	<b>시간</b><br>
-	Day <<print $day>><br>
-	<<print $hour>>:<<print String($minute).padStart(2,"0")>><br>
-	<<print $season>>
-</div>
+	const panel = document.createElement("div");
+	panel.id = "time-panel";
+	panel.innerHTML = `
+		<hr>
+		<div style="font-size:0.8em; color:#ccc;">
+			<b>시간</b>
+			Day ${State.variables.day}
+			${State.variables.hour}:${String(State.variables.minute).padStart(2,"0")}
+			${State.variables.season}
+		</div>
+	`;
+	ui.appendChild(panel);
+})();
+</script>
