@@ -1,20 +1,9 @@
-:: StoryCaption
-<script>
-(function () {
-	const ui = document.getElementById("ui-bar");
-	if (!ui || document.getElementById("time-panel")) return;
-
-	const panel = document.createElement("div");
-	panel.id = "time-panel";
-	panel.innerHTML = `
-		<hr>
-		<div style="font-size:0.8em; color:#ccc;">
-			<b>시간</b>
-			Day ${State.variables.day}
-			${State.variables.hour}:${String(State.variables.minute).padStart(2,"0")}
-			${State.variables.season}
-		</div>
-	`;
-	ui.appendChild(panel);
-})();
-</script>
+:: StoryMenu
+<<if $day is defined>>
+<div style="font-size:0.8em; line-height:1.4; color:#ccc;">
+	<b>시간</b>
+	Day <<print $day>>
+	<<print $hour>>:<<print String($minute).padStart(2,"0")>>
+	<<print $season>>
+</div>
+<</if>>
