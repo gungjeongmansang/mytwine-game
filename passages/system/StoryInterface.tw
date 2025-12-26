@@ -1,9 +1,7 @@
-:: StoryMenu
-<div style="font-size:1.0em; color:#ccc;">
-
-<b>시간</b><br>
-Day <<print $day || 1>><br>
-<<print $hour || 0>>:<<print ($minute != null ? String($minute).padStart(2,"0") : "00")>><br>
-<<print $season || "spring">>
-
+:: StoryCaption
+<div style="font-size:0.8em; color:#ccc; padding-top:6px;">
+	<b>시간</b><br>
+	Day <<print $day || 1>><br>
+	<<print $hour || 0>>:<<print ($minute != null ? String($minute).padStart(2,"0") : "00")>><br>
+	<<print $season || "spring">>
 </div>
