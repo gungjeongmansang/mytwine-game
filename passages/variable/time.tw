@@ -1,38 +1,64 @@
-:: Time [startup]
+:: TimeInit [startup]
+/* 일일 처리용 초기값 */
 
-<<set $day = 1>>
-<<set $hour = 8>>
-<<set $minute = 0>>
-<<set $season = "봄">>
+<<set $dailyAction = 0>>
+<<set $lastProcessedDay = 1>>
 <<set $isSleeping = false>>
 
-:: TimeSystem [widget]
+
+:: TimeWidgets [widget]
+/* =========================
+   TIME ADD WIDGET
+   ========================= */
+
 <<widget "addTime">>
 	<<set _m = $args[0]>>
+	<<set _oldDay = $day>>
+
 	<<set $minute += _m>>
 
-	<<while $minute >= 60>>
-		<<set $minute -= 60>>
-		<<set $hour += 1>>
-	<</while>>
+	<<run (() => {
+		while ($minute >= 60) {
+			$minute -= 60;
+			$hour += 1;
+		}
+		while ($hour >= 24) {
+			$hour -= 24;
+			$day += 1;
+		}
+	})()>>
 
-	<<while $hour >= 24>>
-		<<set $hour -= 24>>
-		<<set $day += 1>>
-	<</while>>
-
-	<<run UI.alert("")>>
+	<<if $day > _oldDay>>
+		<<include "OnNewDay">>
+	<</if>>
 
 	<<include "CheckSeason">>
 <</widget>>
 
-:: CheckSeason
-<<if $day <= 30>>
-    <<set $season = "봄">>
-<<elseif $day <=60>>
-    <<set $season = "여름">>
-<<elseif $day <= 90>>
-    <<set $season = "가을">>
+
+:: OnNewDay [system]
+/* =========================
+   NEW DAY HOOK (NO OUTPUT)
+   ========================= */
+
+<<set $dailyAction = 0>>
+<<set $isSleeping = false>>
+<<set $lastProcessedDay = $day>>
+
+
+:: CheckSeason [system]
+/* =========================
+   SEASON SYSTEM (120 days)
+   ========================= */
+
+<<set _seasonIndex = ($day - 1) % 120>>
+
+<<if _seasonIndex < 30>>
+	<<set $season = "봄">>
+<<elseif _seasonIndex < 60>>
+	<<set $season = "여름">>
+<<elseif _seasonIndex < 90>>
+	<<set $season = "가을">>
 <<else>>
-    <<set $season = "겨울">>
+	<<set $season = "겨울">>
 <</if>>
