@@ -23,7 +23,7 @@
         <<set $politics = 90>>
         <<set $morality = 50>>
         <<set $attention = 15>>
-        <<set $money = { silver: 1000, gold: 1000 }>>
+        <<set $money = { silver = 1000, gold = 1000 }>>
 
         <<elseif $Rank eq "귀인">>
             <<set $knowledge = 25>>
@@ -44,7 +44,7 @@
             <<set $politics = 20>>
             <<set $morality = 100>>
             <<set $attention = 10>>
-            <<set $money = { silver: 1000, gold: 1000 }>>
+            <<set $money = { silver = 1000, gold = 1000 }>>
 
         <<elseif $Rank eq "상재">>
             <<set $knowledge = 15>>
@@ -65,7 +65,7 @@
             <<set $politics = 5>>
             <<set $morality = 45>>
             <<set $attention = 5>>
-            <<set $money = { silver: 1000, gold: 1000 }>>
+            <<set $money = { silver = 1000, gold = 1000 }>>
 
         <<elseif $Rank eq "답응">>
             <<set $knowledge = 30>>
@@ -86,7 +86,7 @@
             <<set $politics = 5>>
             <<set $morality = 30>>
             <<set $attention = 0>>
-            <<set $money = { silver: 1000, gold: 1000 }>>
+            <<set $money = { silver = 1000, gold = 1000 }>>
 
         <<else>>
             <<set $knowledge = 0>>

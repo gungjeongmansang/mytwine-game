@@ -14,8 +14,3 @@
 	bipa: false,
 	chilhyeon: false
 }>>
-
-<<set $money = {
-    silver: 0,
-    gold: 0
-}>>
