@@ -17,5 +17,4 @@
 <</if>>
 
 :: StoryMenu
-[[relationship]]
-<<link "relationship">>…<</link>>
+[[관계]]
