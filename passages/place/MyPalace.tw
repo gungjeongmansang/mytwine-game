@@ -66,15 +66,19 @@
 	<<set $knowledge += 2>>
 <</if>>
 
+:: Event_Book
 <<set _roll = random(1, 100)>>
 
 <<if _roll <= 70>>
-  <<goto "Book_Normal">>
+  <<set $bookResult = "normal">>
 <<elseif _roll <= 90>>
-  <<goto "Book_GoodEvent">>
+  <<set $bookResult = "good">>
 <<else>>
-  <<goto "Book_BadEvent">>
+  <<set $bookResult = "bad">>
 <</if>>
+
+<<goto "Result_Book">>
+
 
 :: Musical_Instrument
 ㅇ

@@ -1,8 +1,14 @@
-:: Book_Normal
-평범한 독서
+:: Result_Book
 
-:: Book_GoodEvent
-기분?이나 컨디션 좋아짐 스트레스-느낌
+<<if $bookResult == "normal">>
+평범하게 책을 읽었다.
+<<set $know += 5>>
+<<elseif $bookResult == "good">>
+집중이 잘 된다. 이해가 깊어졌다.
+<<set $knowledge += 10>>
+<<else>>
+머리가 잘 돌아가지 않는다.
+<<set $knowledge += 1>>
+<</if>>
 
-:: Book_BadEvent
-책읽다가 안좋은걸 봣다던지..그런거
+[[돌아가기|Hobby]]

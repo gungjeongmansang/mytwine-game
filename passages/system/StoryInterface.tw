@@ -1,4 +1,6 @@
 :: StoryCaption
+
+:: StoryAuthor
 <<if $day is not undefined>>
 <div style="
   position: fixed;
@@ -13,3 +15,7 @@
   <<print $season>>
 </div>
 <</if>>
+
+:: StoryMenu
+[[relationship]]
+<<link "relationship">>…<</link>>
