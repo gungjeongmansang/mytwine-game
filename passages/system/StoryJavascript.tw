@@ -1,0 +1,16 @@
+:: StoryJavascript [script]
+(function () {
+    document.addEventListener("keydown", function (e){
+        if (e.key >= "1" && e.key <= "9"){
+            const index = parseInt(e.key, 10) - 1;
+
+            const links = document.querySelectorAll(
+                "#passages a.internal, #passages a.link-internal"
+            );
+
+            if (links[index]){
+                links[index].click();
+            }
+        }
+    });
+})();
