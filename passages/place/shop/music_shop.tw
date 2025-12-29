@@ -2,31 +2,32 @@
 악기를 다루는 장인의 처소다.
 
 <<if !$instruments.flute>>
-피리 | [[구매한다 (은전 50)|Buy_Instrument]]
-<<set _buyKey = "flute">>
-<<set _buyName = "피리">>
-<<set _buyPrice = 50>>
+    <<set _buyKey = "flute">>
+    <<set _buyName = "피리">>
+    <<set _buyPrice = 50>>
+    피리 | [[구매한다 (은전 50)|Buy_Instrument]]
+
 <</if>>
 
 <<if $music >= 100 and !$instruments.jang>>
-쟁 | [[구매한다 (은전 120)|Buy_Instrument]]
-<<set _buyKey = "jang">>
-<<set _buyName = "쟁">>
-<<set _buyPrice = 120>>
+    <<set _buyKey = "jang">>
+    <<set _buyName = "쟁">>
+    <<set _buyPrice = 120>>
+    쟁 | [[구매한다 (은전 120)|Buy_Instrument]]
 <</if>>
 
 <<if $music >= 200 and !$instruments.bipa>>
-비파 | [[구매한다 (은전 300)|Buy_Instrument]]
-<<set _buyKey = "bipa">>
-<<set _buyName = "비파">>
-<<set _buyPrice = 300>>
+    <<set _buyKey = "bipa">>
+    <<set _buyName = "비파">>
+    <<set _buyPrice = 300>>
+    비파 | [[구매한다 (은전 300)|Buy_Instrument]]
 <</if>>
 
 <<if $music >= 400 and !$instruments.chilhyeon>>
-칠현금 | [[구매한다 (은전 500)|Buy_Instrument]]
-<<set _buyKey = "chilhyeon">>
-<<set _buyName = "칠현금">>
-<<set _buyPrice = 500>>
+    <<set _buyKey = "chilhyeon">>
+    <<set _buyName = "칠현금">>
+    <<set _buyPrice = 500>>
+    칠현금 | [[구매한다 (은전 500)|Buy_Instrument]]
 <</if>>
 
 [[돌아가기|Hobby]]
