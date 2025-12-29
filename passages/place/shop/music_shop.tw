@@ -1,60 +1,62 @@
 :: Shop_Music
 악기를 다루는 장인의 처소다.
 
-/* 피리 */
 <<if !$instruments.flute>>
-피리 |
-<<link "구매한다 (은전 50)">>
-	<<if $money.silver < 50>>
-		은전이 부족하다.
-	<<else>>
-		<<set $money.silver -= 50>>
-		<<set $instruments.flute = true>>
-		당신은 피리를 구매했다.
-	<</if>>
-<</link>>
+피리 | [[구매한다 (은전 50)|Buy_Flute]]
 <</if>>
 
-/* 쟁 */
 <<if $music >= 100 and !$instruments.jang>>
-쟁 |
-<<link "구매한다 (은전 120)">>
-	<<if $money.silver < 120>>
-		은전이 부족하다.
-	<<else>>
-		<<set $money.silver -= 120>>
-		<<set $instruments.jang = true>>
-		당신은 쟁을 구매했다.
-	<</if>>
-<</link>>
+쟁 | [[구매한다 (은전 120)|Buy_Jang]]
 <</if>>
 
-/* 비파 */
 <<if $music >= 200 and !$instruments.bipa>>
-비파 |
-<<link "구매한다 (은전 300)">>
-	<<if $money.silver < 300>>
-		은전이 부족하다.
-	<<else>>
-		<<set $money.silver -= 300>>
-		<<set $instruments.bipa = true>>
-		당신은 비파를 구매했다.
-	<</if>>
-<</link>>
+비파 | [[구매한다 (은전 300)|Buy_Bipa]]
 <</if>>
 
-/* 칠현금 */
 <<if $music >= 400 and !$instruments.chilhyeon>>
-칠현금 |
-<<link "구매한다 (은전 500)">>
-	<<if $money.silver < 500>>
-		은전이 부족하다.
-	<<else>>
-		<<set $money.silver -= 500>>
-		<<set $instruments.chilhyeon = true>>
-		당신은 칠현금을 구매했다.
-	<</if>>
-<</link>>
+칠현금 | [[구매한다 (은전 500)|Buy_Chilhyeon]]
 <</if>>
 
 [[돌아가기|Hobby]]
+
+:: Buy_Flute
+<<if $money.silver < 50>>
+은전이 부족하다. 장인은 고개를 젓는다.
+<<else>>
+<<set $money.silver -= 50>>
+<<set $instruments.flute = true>>
+장인은 정성스럽게 다듬은 피리를 당신의 손에 쥐여준다.
+<</if>>
+
+[[돌아가기|Shop_Music]]
+
+:: Buy_Jang
+<<if $money.silver < 120>>
+은전이 부족하다. 장인은 고개를 젓는다.
+<<else>>
+<<set $money.silver -= 120>>
+<<set $instruments.jang = true>>
+쟁을 조심스럽게 건네받는다. 낮은 울림이 손끝에 남는다.
+<</if>>
+
+[[돌아가기|Shop_Music]]
+:: Buy_Bipa
+<<if $money.silver < 300>>
+은전이 부족하다. 장인은 말없이 손을 거둔다.
+<<else>>
+<<set $money.silver -= 300>>
+<<set $instruments.bipa = true>>
+비파를 품에 안자 묵직한 무게감이 전해진다.
+<</if>>
+
+[[돌아가기|Shop_Music]]
+:: Buy_Chilhyeon
+<<if $money.silver < 500>>
+은전이 부족하다. 장인은 고개를 젓는다.
+<<else>>
+<<set $money.silver -= 500>>
+<<set $instruments.chilhyeon = true>>
+칠현금의 줄이 낮게 울리며, 깊은 음이 공기를 가른다.
+<</if>>
+
+[[돌아가기|Shop_Music]]
