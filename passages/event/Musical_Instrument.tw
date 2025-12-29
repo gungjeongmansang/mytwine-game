@@ -1,22 +1,15 @@
-:: Musical_Instrument
-<<addTime 60>>
-<<goto "Event_Musical_Instrument">>
-:: Event_Musical_Instrument
-<<set _roll = random(1, 100)>>\
-<<if _roll <= 70>>\
-	<<set $Musical_InstrumentResult = "normal">>\
-<<elseif _roll <= 90>>\
-	<<set $Musical_InstrumentResult = "good">>\
-<<else>>\
-	<<set $Musical_InstrumentResult = "bad">>\
-<</if>>\
-<<goto "Result_Musical_Instrument">>
 :: Result_Musical_Instrument
+
 /* ── 악기 보유 체크 ── */
 <<if !$instruments.flute and !$instruments.jang and !$instruments.bipa and !$instruments.chilhyeon>>
+
 악기를 연주하려면 악기가 필요한 법, 당신은 지금 보유한 악기가 없다.
-<<goto "Hobby">>
-<</if>>
+
+[[돌아가기|Hobby]]
+
+<<else>>
+
+/* ── 여기부터는 “악기가 있을 때만” 실행됨 ── */
 
 /* ── 악기 판정 ── */
 <<if $music <= 100>>\
@@ -40,8 +33,9 @@
 	<<set $fatigue += 2>>\
 	<<set $music += 4>>\
 <</if>>\
-<<set $mental -= 1>>\
-/* ── 최초 4단계 도달 메시지 (변수 추가 없음) ── */
+<<set $mental -= 1>>
+
+/* ── 최초 4단계 도달 메시지 ── */
 <<if _instrument == "피리">>\
 	<<if _step >= 4 and Math.floor(($music - 2) / 20) < 4>>\
 	이제 다른 악기를 연주해봐도 될 것 같다.\
@@ -59,6 +53,7 @@
 	이제 더 배울 악기는 없는 듯하다.\
 	<</if>>\
 <</if>>
+
 /* ── 연주 결과 서술 ── */
 <<if _instrument == "피리">>\
 	<<if _step == 0>>\
@@ -117,3 +112,4 @@
 
 
 [[돌아가기|Hobby]]
+<</if>>
