@@ -33,53 +33,6 @@
 [[그림을 그린다->Painting]]
 [[자수를 놓는다->Embroidery]]
 
-:: Book
-
-<<addTime 60>>
-
-/* ── 학식 수준 서술 ── */
-<<if $knowledge <= 100>>
-아직 글의 뜻을 곱씹어야 한다.
-<<elseif $knowledge <= 200>>
-책의 내용을 어느 정도 이해한다.
-<<elseif $knowledge <= 300>>
-문장을 훑기만 해도 요지가 보인다.
-<<elseif $knowledge <= 400>>
-깊은 문헌도 막힘없이 읽어낸다.
-<<else>>
-이 황궁에서 학식으로 당신을 넘을 이는 없다.
-<</if>>
-
-/* ── 시간대 분위기 ── */
-<<if $hour < 12>>
-아침 햇살 아래에서 책장을 넘겼다.
-<<elseif $hour < 18>>
-조용한 오후가 흘러갔다.
-<<else>>
-등불 아래서 책을 읽었다.
-<</if>>
-
-/* ── 상승 처리 ── */
-<<if $knowledge <= 200>>
-	<<set $knowledge += 5>>
-<<elseif $knowledge <= 400>>
-	<<set $knowledge += 2>>
-<</if>>
-
-:: Event_Book
-<<set _roll = random(1, 100)>>
-
-<<if _roll <= 70>>
-  <<set $bookResult = "normal">>
-<<elseif _roll <= 90>>
-  <<set $bookResult = "good">>
-<<else>>
-  <<set $bookResult = "bad">>
-<</if>>
-
-<<goto "Result_Book">>
-
-
 :: Musical_Instrument
 ㅇ
 <<addTime 60>>

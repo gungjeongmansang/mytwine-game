@@ -1,0 +1,54 @@
+:: Book
+
+<<addTime 60>>
+<<goto "Event_Book">>
+:: Event_Book
+<<set _roll = random(1, 100)>>
+
+<<if _roll <= 70>>
+	<<set $bookResult = "normal">>
+<<elseif _roll <= 90>>
+	<<set $bookResult = "good">>
+<<else>>
+	<<set $bookResult = "bad">>
+<</if>>
+
+<<goto "Result_Book">>
+
+:: Result_BooK
+
+/* ── 학식 수준 서술 ── */
+<<if $knowledge <= 100>>
+아직 글의 뜻을 곱씹어야 한다.
+<<elseif $knowledge <= 200>>
+책의 내용을 어느 정도 이해한다.
+<<elseif $knowledge <= 300>>
+문장을 훑기만 해도 요지가 보인다.
+<<elseif $knowledge <= 400>>
+깊은 문헌도 막힘없이 읽어낸다.
+<<else>>
+이 황궁에서 학식으로 당신을 넘을 이는 없다.
+<</if>>
+
+/* ── 랜덤 결과 ── */
+<<if $bookResult == "normal">>
+평범하게 책을 읽었다.
+<<set $knowledge += 5>>
+<<elseif $bookResult == "good">>
+집중이 잘 된다. 이해가 깊어졌다.
+<<set $knowledge += 10>>
+<<else>>
+머리가 잘 돌아가지 않는다.
+<<set $knowledge += 1>>
+<</if>>
+
+/* ── 시간대 분위기 ── */
+<<if $hour < 12>>
+아침 햇살 아래에서 책장을 넘겼다.
+<<elseif $hour < 18>>
+조용한 오후가 흘러갔다.
+<<else>>
+등불 아래서 책을 읽었다.
+<</if>>
+
+[[돌아가기|Hobby]]
