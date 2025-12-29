@@ -1,0 +1,46 @@
+:: Shop_Music
+악기를 다루는 장인의 처소다.
+
+<<if !$instruments.flute>>
+	<<set _buyKey = "flute">>
+	<<set _buyName = "피리">>
+	<<set _buyPrice = 50>>
+	[[<<print _buyName>>을 구매한다|Buy_Instrument]]
+<</if>>
+
+<<if $music >= 100 and !$instruments.jang>>
+	<<set _buyKey = "jang">>
+	<<set _buyName = "쟁">>
+	<<set _buyPrice = 120>>
+	[[<<print _buyName>>을 구매한다|Buy_Instrument]]
+<</if>>
+
+<<if $music >= 200 and !$instruments.bipa>>
+	<<set _buyKey = "bipa">>
+	<<set _buyName = "비파">>
+	<<set _buyPrice = 300>>
+	[[<<print _buyName>>을 구매한다|Buy_Instrument]]
+<</if>>
+
+<<if $music >= 400 and !$instruments.chilhyeon>>
+	<<set _buyKey = "chilhyeon">>
+	<<set _buyName = "칠현금">>
+	<<set _buyPrice = 500>>
+	[[<<print _buyName>>을 구매한다|Buy_Instrument]]
+<</if>>
+
+[[돌아가기|Hobby]]
+
+:: Buy_Instrument
+<<if $silver < _buyPrice>>
+은전이 부족하다.
+[[돌아가기|Shop_Music]]
+<<return>>
+<</if>>
+
+<<set $silver -= _buyPrice>>
+<<set $instruments[_buyKey] = true>>
+
+당신은 <<print _buyName>>을 구매했다.
+
+[[돌아가기|Shop_Music]]

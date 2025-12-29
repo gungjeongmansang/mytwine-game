@@ -23,6 +23,7 @@
         <<set $politics = 90>>
         <<set $morality = 50>>
         <<set $attention = 15>>
+        <<set $money = { silver: 1000, gold: 1000 }>>
 
         <<elseif $Rank eq "귀인">>
             <<set $knowledge = 25>>

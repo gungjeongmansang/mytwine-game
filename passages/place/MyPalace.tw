@@ -31,23 +31,7 @@
 [[무용을 연습한다->Dance]]
 [[그림을 그린다->Painting]]
 [[자수를 놓는다->Embroidery]]
-
-:: Musical_Instrument
-ㅇ
-<<addTime 60>>
-
-:: Dance
-ㅇ
-<<addTime 60>>
-
-:: Painting
-ㅇ
-<<addTime 30>>
-
-:: Embroidery
-ㅇ
-<<addTime 60>>
-
+[[악기 구매->Shop_Music]]
 :: Invite
 
 누구를 초대할까?
