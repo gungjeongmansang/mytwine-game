@@ -7,3 +7,15 @@
 <<set $isLogin = false>>
 <<set $hasSave = false>>
 <<include "PlayerInit">>
+
+<<set $instruments = {
+	flute: false,
+	jang: false,
+	bipa: false,
+	chilhyeon: false
+}>>
+
+<<set $money = {
+    silver: 0,
+    gold: 0
+}>>
