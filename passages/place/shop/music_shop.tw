@@ -1,58 +1,60 @@
 :: Shop_Music
 악기를 다루는 장인의 처소다.
+
+/* 피리 */
 <<if !$instruments.flute>>
 피리 |
 <<link "구매한다 (은전 50)">>
-	<<set _buyKey = "flute">>
-	<<set _buyName = "피리">>
-	<<set _buyPrice = 50>>
-	<<goto "Buy_Instrument">>
+	<<if $money.silver < 50>>
+		은전이 부족하다.
+	<<else>>
+		<<set $money.silver -= 50>>
+		<<set $instruments.flute = true>>
+		당신은 피리를 구매했다.
+	<</if>>
 <</link>>
 <</if>>
 
+/* 쟁 */
 <<if $music >= 100 and !$instruments.jang>>
 쟁 |
 <<link "구매한다 (은전 120)">>
-	<<set _buyKey = "jang">>
-	<<set _buyName = "쟁">>
-	<<set _buyPrice = 120>>
-	<<goto "Buy_Instrument">>
+	<<if $money.silver < 120>>
+		은전이 부족하다.
+	<<else>>
+		<<set $money.silver -= 120>>
+		<<set $instruments.jang = true>>
+		당신은 쟁을 구매했다.
+	<</if>>
 <</link>>
 <</if>>
 
+/* 비파 */
 <<if $music >= 200 and !$instruments.bipa>>
 비파 |
 <<link "구매한다 (은전 300)">>
-	<<set _buyKey = "bipa">>
-	<<set _buyName = "비파">>
-	<<set _buyPrice = 300>>
-	<<goto "Buy_Instrument">>
+	<<if $money.silver < 300>>
+		은전이 부족하다.
+	<<else>>
+		<<set $money.silver -= 300>>
+		<<set $instruments.bipa = true>>
+		당신은 비파를 구매했다.
+	<</if>>
 <</link>>
 <</if>>
 
+/* 칠현금 */
 <<if $music >= 400 and !$instruments.chilhyeon>>
 칠현금 |
 <<link "구매한다 (은전 500)">>
-    <<set _buyKey = "chilhyeon">>
-    <<set _buyName = "칠현금">>
-    <<set _buyPrice = 500>>
-    <<goto "Buy_Instrument">>
+	<<if $money.silver < 500>>
+		은전이 부족하다.
+	<<else>>
+		<<set $money.silver -= 500>>
+		<<set $instruments.chilhyeon = true>>
+		당신은 칠현금을 구매했다.
+	<</if>>
 <</link>>
 <</if>>
 
 [[돌아가기|Hobby]]
-
-:: Buy_Instrument
-<<if $money.silver < _buyPrice>>
-은전이 부족하다. 장인은 고개를 젓는다.
-[[돌아가기|Shop_Music]]
-<<return>>
-<</if>>
-
-<<set $money.silver -= _buyPrice>>
-<<set $instruments[_buyKey] = true>>
-
-당신은 <<print _buyName>>을 구매했다.
-
-[[돌아가기|Shop_Music]]
-
