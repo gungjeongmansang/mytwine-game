@@ -13,10 +13,9 @@
 <<goto "Result_Musical_Instrument">>
 :: Result_Musical_Instrument
 /* ── 악기 보유 체크 ── */
-<<if !$instruments.flute and !$instruments.jang and !$instruments.bipa and !$instruments.chilhyeon>>\
-악기를 연주하려면 악기가 필요한 법, 당신은 지금 보유한 악기가 없다.\
-[[돌아가기|Hobby]]
-<<return>>
+<<if !$instruments.flute and !$instruments.jang and !$instruments.bipa and !$instruments.chilhyeon>>
+악기를 연주하려면 악기가 필요한 법, 당신은 지금 보유한 악기가 없다.
+<<goto "Hobby">>
 <</if>>
 
 /* ── 악기 판정 ── */
