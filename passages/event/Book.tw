@@ -2,6 +2,7 @@
 
 <<addTime 60>>
 <<goto "Event_Book">>
+
 :: Event_Book
 <<set _roll = random(1, 100)>>
 
@@ -15,7 +16,7 @@
 
 <<goto "Result_Book">>
 
-:: Result_BooK
+:: Result_Book
 
 /* ── 학식 수준 서술 ── */
 <<if $knowledge <= 100>>
