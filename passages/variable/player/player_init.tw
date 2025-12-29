@@ -4,8 +4,7 @@
 <</if>>
 
 <!-- 난이도에 따른 스탯 -->
-
-<<if $difficulty is "veryeasy">>
+<<if $Rank is "빈">>
 	<<set $knowledge = 110>>
     <<set $music = 60>>
     <<set $dance = 60>>
@@ -25,7 +24,7 @@
     <<set $morality = 50>>
     <<set $attention = 15>>
 
-    <<elseif $difficulty is "easy">>
+    <<elseif $Rank is "귀인">>
         <<set $knowledge = 25>>
         <<set $music = 50>>
         <<set $dance = 30>>
@@ -45,7 +44,7 @@
         <<set $morality = 100>>
         <<set $attention = 10>>
 
-    <<elseif $difficulty is "normal">>
+    <<elseif $Rank is "상재">>
         <<set $knowledge = 15>>
         <<set $music = 20>>
         <<set $dance = 40>>
@@ -65,7 +64,7 @@
         <<set $morality = 45>>
         <<set $attention = 5>>
 
-    <<elseif $difficulty is "hard">>
+    <<elseif $Rank is "답응">>
         <<set $knowledge = 30>>
         <<set $music = 70>>
         <<set $dance = 55>>
