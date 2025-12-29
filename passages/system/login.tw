@@ -1,12 +1,3 @@
-:: StoryInit
-<<set $day = 1>>
-<<set $hour = 8>>
-<<set $minute = 0>>
-<<set $season = "봄">>
-
-<<set $isLogin = false>>
-<<set $hasSave = false>>
-
 :: LoginCheck
 <<if $isLogin>>
 	[[계속->MainMenu]]
