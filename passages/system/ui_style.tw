@@ -1,6 +1,0 @@
-:: UI_Style [script]
-<style>
-.passage p {
-  margin: 0.3em 0;
-}
-</style>
