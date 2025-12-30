@@ -1,3 +1,21 @@
-:: PlayerSetting
-
-<!-- 근데 이 파일이 필요한지 잘 모르겠다 일단 보류 -->
+:: 스탯
+    <<print $knowledge>>
+    <<print $music>>
+    <<print $dance>>
+    <<print $painting>>
+    <<print $social>>
+    <<print $stamina>>
+    <<print $faith>>
+    <<print $handSkills>>
+    <<print $riding>>
+    <<print $medicine>>
+    <<print $charm>>
+    <<print $foreginLang>>
+    <<print $farming>>
+    <<print $strategy>>
+    <<print $beauty>>
+    <<print $politics>>
+    <<print $morality>>
+    <<print $attention>>
+    <<print $money ? $money.silver : 0>>
+    <<print $money ? $money.gold : 0>>

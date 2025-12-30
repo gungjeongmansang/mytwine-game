@@ -1,20 +1,9 @@
-:: StoryCaption
-
 :: StoryAuthor
-<<if $day is not undefined>>
-<div style="
-  position: fixed;
-  left: 20px;
-  top: 40%;
-  font-size: 14px;
-  color: #ccc;
-">
   <b>시간</b><br>
-  Day <<print $day>><br>
-  <<print $hour>>:<<print String($minute).padStart(2,'0')>><br>
-  <<print $season>>
-</div>
-<</if>>
+  <<print $day>>일\
+  <<print $hour>>:<<print String($minute).padStart(2,'0')>>
+  <<print $season>>\
 
 :: StoryMenu
 [[관계]]
+[[스탯]]
