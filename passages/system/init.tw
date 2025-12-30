@@ -6,7 +6,6 @@
 
 <<set $isLogin = false>>
 <<set $hasSave = false>>
-<<include "PlayerInit">>
 
 <<set $instruments = {
 	flute: false,

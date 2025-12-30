@@ -1,127 +1,148 @@
 :: Musical_Instrument
-<<addTime 60>>
-<<goto "Event_Musical_Instrument">>
-:: Event_Musical_Instrument
+<<addTime 60>>\
+<<goto "Event_Musical">>
+
+:: Event_Musical
 <<set _roll = random(1, 100)>>\
 <<if _roll <= 70>>\
-	<<set $Musical_InstrumentResult = "normal">>\
+	<<set $MusicalResult = "normal">>\
 <<elseif _roll <= 90>>\
-	<<set $Musical_InstrumentResult = "good">>\
+	<<set $MusicalResult = "good">>\
 <<else>>\
-	<<set $Musical_InstrumentResult = "bad">>\
+	<<set $MusicalResult = "bad">>\
 <</if>>\
-<<goto "Result_Musical_Instrument">>
-:: Result_Musical_Instrument
-
-/* ── 악기 보유 체크 ── */
-<<if !$instruments.flute and !$instruments.jang and !$instruments.bipa and !$instruments.chilhyeon>>
-
+<<goto "Result_Musical">>
+:: Result_Musical
+<<if !$instruments.flute and !$instruments.jang and !$instruments.bipa and !$instruments.chilhyeon>>\
 악기를 연주하려면 악기가 필요한 법, 당신은 지금 보유한 악기가 없다.
-
-[[돌아가기|Hobby]]
-
-<<else>>
-
-/* ── 여기부터는 “악기가 있을 때만” 실행됨 ── */
-
-/* ── 악기 판정 ── */
+[[돌아가기|Hobby]]\
+<<else>>\
 <<if $music <= 100>>\
-	<<set _instrument = "피리">>\
-	<<set _step = Math.floor($music / 20)>>\
-	<<set $fatigue += 1>>\
-	<<set $music += 2>>\
+	<<if !$instruments.flute>>\
+	지금의 실력으로는 피리를 연주해야 하지만, 아직 피리를 보유하고 있지 않다.\
+	<<else>>\
+	당신은 피리의 취구에 입술을 갖다대고, 지공을 손가락으로 막아 바람을 불어넣기 시작한다.\
+	<<if $MusicalResult == "normal">>\
+	어쩌다 한 번씩 음계가 틀리곤 하나, 당신의 연주는 무난하게 이어진다.\
+	<<elseif $MusicalResult == "good">>\
+	오늘따라 소리가 깔끔하고 선율이 아름답게 들리는 기분이다. 당신은 흥겹게 피리를 연주한다.\
+	<<else>>\
+	취구 위로 맞댄 입술이 뻐근한 느낌이다. 거기다 손가락은 자꾸 미끄러지니 혼자서도 불협화음을 만들어낸다.\
+	<</if>>\
+	<<if $music < 100>>\
+		<<if $MusicalResult == "normal">><<set $music += 2>>\
+		<<elseif $MusicalResult == "good">><<set $music += 4>>\
+		<<else>><<set $music += 1>><</if>>\
+		<<set $fatigue += 1>>\
+		<<set $mental -= 1>>\
+		<<if $music < 20>>\
+		당신의 피리 연주는 연주라고 부르기도 부끄러울 만큼, 음계를 가진 소리가 거의 들리지 않는다. 외실을 채우는 소리라곤 바람 소리가 전부다.\
+		<<elseif $music < 40>>\
+		이제 피리 소리가 조금씩 들리기 시작하는 것 같다. 비록 음이탈이 잦지만 짧게나마 선율이 이어지며, 외실 내의 궁인들도 귀를 슬쩍 기울인다.\
+		<<elseif $music < 60>>\
+		맑은 피리 소리가 외실 내에 울려퍼진다. 복잡한 곡조를 연주하기엔 부족한 실력이지만, 단조로운 곡조를 연주하기엔 충분히 훌륭한 실력으로 성장했음을 느낀다.\
+		<<elseif $music < 80>>\
+		청아한 피리 소리가 끊김 없이 부드럽게 이어지고, 피리의 음색이 외실을 채운다. 당신의 연주는 수준급이다.\
+		<<else>>\
+		하늘 위를 날아가던 새도 당신의 피리 소리를 즐기려는지 창가에 앉아 기웃댄다. 당신의 피리 연주 실력은 단연코 황실에서 최고일 것이다.\
+		<</if>>\
+	<<else>>\
+		<<set $fatigue += 1>>\
+		<<set $mental -= 1>>\
+		<<if $instruments.jang>>\
+		피리로는 더 배울 것이 없는 듯하다. 당신은 쟁으로 시선을 옮긴다.\
+		<<set $music = 101>>\
+		<<goto "Result_Musical">>\
+		<<else>>\
+		더 이상 피리로 배울 수 있는 음악적 지식은 없는 듯하다. 당신은 색다른 악기를 구할 필요성을 느낀다.\
+	<</if>>\
+	<</if>>\
+    <</if>>\
 <<elseif $music <= 200>>\
-	<<set _instrument = "쟁">>\
-	<<set _step = Math.floor(($music - 101) / 20)>>\
-	<<set $fatigue += 1>>\
-	<<set $music += 2>>\
+	<<if !$instruments.jang>>\
+	더 이상 피리로 배울 수 있는 음악적 지식은 없는 듯하다. 당신은 색다른 악기를 구할 필요성을 느낀다.\
+	<<else>>\
+	당신은 쟁의 줄을 조심스레 뜯기 시작한다.\
+	<<if $MusicalResult == "normal">>\
+	연주는 안정적이지만 조심스럽다.\
+	<<elseif $MusicalResult == "good">>\
+	줄의 울림이 깊고 단단하게 이어진다.\
+	<<else>>\
+	손놀림이 어긋나며 음이 고르지 않다.\
+	<</if>>\
+	<<if $music < 200>>\
+		<<if $MusicalResult == "normal">><<set $music += 2>>\
+		<<elseif $MusicalResult == "good">><<set $music += 4>>\
+		<<else>><<set $music += 1>><</if>>\
+		<<set $fatigue += 1>>\
+		<<set $mental -= 1>>\
+	<<else>>\
+		<<set $fatigue += 1>>\
+		<<set $mental -= 1>>\
+		<<if $instruments.bipa>>\
+		쟁으로는 더 배울 것이 없다. 당신은 비파를 떠올린다.\
+		<<set $music = 201>>\
+		<<goto "Result_Musical">>\
+		<<else>>\
+		더 이상 쟁으로 배울 수 있는 음악적 지식은 없는 듯하다. 당신은 색다른 악기를 구할 필요성을 느낀다.\
+		<</if>>\
+	<</if>>\
+	<</if>>\
 <<elseif $music <= 400>>\
-	<<set _instrument = "비파">>\
-	<<set _step = Math.floor(($music - 201) / 40)>>\
-	<<set $fatigue += 2>>\
-	<<set $music += 4>>\
+	<<if !$instruments.bipa>>\
+	더 이상 쟁으로 배울 수 있는 음악적 지식은 없는 듯하다. 당신은 색다른 악기를 구할 필요성을 느낀다.\
+	<<else>>\
+	당신은 비파를 품에 안고 연주를 시작한다.\
+	<<if $MusicalResult == "normal">>\
+	연주는 무난하지만 조심스럽다.\
+	<<elseif $MusicalResult == "good">>\
+	선율이 화려하게 얽히며 공간을 채운다.\
+	<<else>>\
+	손끝이 엇나가며 흐름이 무너진다.\
+	<</if>>\
+	<<if $music < 400>>\
+		<<if $MusicalResult == "normal">><<set $music += 4>>\
+		<<elseif $MusicalResult == "good">><<set $music += 8>>\
+		<<else>><<set $music += 2>><</if>>\
+		<<set $fatigue += 2>>\
+		<<set $mental -= 1>>\
+	<<else>>\
+		<<set $fatigue += 2>>\
+		<<set $mental -= 1>>\
+		<<if $instruments.chilhyeon>>\
+		비파로는 더 배울 것이 없다. 당신은 칠현금 앞에 앉는다.\
+		<<set $music = 401>>\
+		<<goto "Result_Musical">>\
+		<<else>>\
+		더 이상 비파로 배울 수 있는 음악적 지식은 없는 듯하다. 당신은 색다른 악기를 구할 필요성을 느낀다.\
+		<</if>>\
+	<</if>>\
+	<</if>>\
 <<else>>\
-	<<set _instrument = "칠현금">>\
-	<<set _step = Math.floor(($music - 401) / 20)>>\
-	<<set $fatigue += 2>>\
-	<<set $music += 4>>\
+	<<if !$instruments.chilhyeon>>\
+	더 이상 비파로 배울 수 있는 음악적 지식은 없는 듯하다. 당신은 색다른 악기를 구할 필요성을 느낀다.\
+	<<else>>\
+	당신은 칠현금 앞에 앉아 줄을 뜯는다.\
+	<<if $MusicalResult == "normal">>\
+	연주는 차분히 이어진다.\
+	<<elseif $MusicalResult == "good">>\
+	깊고 단단한 울림이 공간을 채운다.\
+	<<else>>\
+	집중이 흐트러진다.\
+	<</if>>\
+	<<if $music < 500>>\
+		<<if $MusicalResult == "normal">><<set $music += 4>>\
+		<<elseif $MusicalResult == "good">><<set $music += 8>>\
+		<<else>><<set $music += 2>><</if>>\
+		<<set $fatigue += 2>>\
+		<<set $mental -= 1>>\
+	<<else>>\
+		<<set $fatigue += 2>>\
+		<<set $mental -= 1>>\
+		당신은 더 이상 악기 연주를 연습할 필요가 없을 만큼 뛰어난 실력을 갖고 있다.\
+	<</if>>\
+	<</if>>\
 <</if>>\
-<<set $mental -= 1>>
 
-/* ── 최초 4단계 도달 메시지 ── */
-<<if _instrument == "피리">>\
-	<<if _step >= 4 and Math.floor(($music - 2) / 20) < 4>>\
-	이제 다른 악기를 연주해봐도 될 것 같다.\
-	<</if>>\
-<<elseif _instrument == "쟁">>\
-	<<if _step >= 4 and Math.floor((($music - 2) - 101) / 20) < 4>>\
-	이제 다른 악기를 연주해봐도 될 것 같다.\
-	<</if>>\
-<<elseif _instrument == "비파">>\
-	<<if _step >= 4 and Math.floor((($music - 4) - 201) / 40) < 4>>\
-	이제 다른 악기를 연주해봐도 될 것 같다.\
-	<</if>>\
-<<else>>\
-	<<if _step >= 4 and Math.floor((($music - 4) - 401) / 20) < 4>>\
-	이제 더 배울 악기는 없는 듯하다.\
-	<</if>>\
-<</if>>
-/* ── 연주 결과 서술 ── */
-<<if _instrument == "피리">>\
-	<<if _step == 0>>\
-    당신은 피리의 취구에 입술을 갖다대고, 지공을 손가락으로 막아 피리에 바람을 불어넣기 시작한다.
-    당신의 피리 연주는 연주라고 부르기도 부끄러울 만큼, 음계를 가진 소리가 거의 들리지 않는다. 외실을 채우는 소리라곤 바람 소리가 전부다.\
-	<<elseif _step == 1>>\
-    당신은 피리의 취구에 입술을 갖다대고, 지공을 손가락으로 막아 피리에 바람을 불어넣기 시작한다.
-	이제 피리 소리가 조금씩 들리기 시작하는 것 같다. 비록 음이탈이 잦지만 짧게나마 선율이 이어지며, 외실 내의 궁인들도 귀를 슬쩍 기울인다.\
-	<<elseif _step == 2>>\
-	당신은 피리의 취구에 입술을 갖다대고, 지공을 손가락으로 막아 피리에 바람을 불어넣기 시작한다.
-    맑은 피리 소리가 외실 내에 울려퍼진다. 복잡한 곡조를 연주하기엔 부족한 실력이지만, 단조로운 곡조를 연주하기엔 충분히 훌륭한 실력으로 성장했음을 느낀다.\
-	<<elseif _step == 3>>\
-    당신은 피리의 취구에 입술을 갖다대고, 지공을 손가락으로 막아 피리에 바람을 불어넣기 시작한다.
-	청아한 피리 소리가 끊김 없이 부드럽게 이어지고, 피리의 음색이 외실을 채운다. 당신의 연주는 수준급이다.\
-	<<else>>\
-	당신은 피리의 취구에 입술을 갖다대고, 지공을 손가락으로 막아 피리에 바람을 불어넣기 시작한다.
-    하늘 위를 날아가던 새도 당신의 피리 소리를 즐기려는지 창가에 앉아 기웃댄다. 당신의 피리 연주 실력은 단연코 황실에서 최고일 것이다.\
-	<</if>>\
-<<elseif _instrument == "쟁">>\
-	<<if _step == 0>>\
-	쟁의 줄을 조심스레 뜯는다. 소리는 아직 거칠지만, 곡의 형태는 어렴풋이 드러난다.\
-	<<elseif _step == 1>>\
-	줄 위를 오가는 손놀림이 한결 안정된다. 울림은 차분히 이어지고, 곡조가 자리를 잡는다.\
-	<<elseif _step == 2>>\
-	쟁의 깊은 울림이 공간을 채운다. 선율은 단정하고, 연주는 흐트러짐이 없다.\
-	<<elseif _step == 3>>\
-	줄 하나하나가 또렷이 살아난다. 쟁의 음은 무게를 지니고, 곡은 자연스럽게 이어진다.\
-	<<else>>\
-	쟁의 울림은 깊고 단단하다. 연주는 궁중의 정적 속에 오래 남는 여운을 남긴다.\
-	<</if>>\
-<<elseif _instrument == "비파">>\
-	<<if _step == 0>>\
-	비파를 품에 안고 연주를 시작하지만, 손끝이 아직 악기를 완전히 따르지 못한다.\
-	<<elseif _step == 1>>\
-	줄을 튕기는 소리가 또렷해진다. 복잡한 선율 속에서도 흐름을 잃지 않는다.\
-	<<elseif _step == 2>>\
-	비파의 음이 화려하게 얽힌다. 빠른 손놀림 속에서도 곡의 구조가 분명히 드러난다.\
-	<<elseif _step == 3>>\
-	선율은 유려하고, 비파의 음색은 풍부하다. 연주는 보는 이의 시선을 사로잡는다.\
-	<<else>>\
-	비파는 마치 당신의 일부처럼 움직인다. 화려한 연주는 궁중의 공기를 바꿔 놓는다.\
-	<</if>>\
-<<else>>\
-	<<if _step == 0>>\
-	칠현금 앞에 앉아 조심스럽게 줄을 뜯는다. 음 하나하나에 깊은 집중이 요구된다.\
-	<<elseif _step == 1>>\
-	낮고 깊은 울림이 서서히 이어진다. 연주는 절제되어 있으며, 사유를 머금고 있다.\
-	<<elseif _step == 2>>\
-	칠현금의 선율은 느리지만 단단하다. 곡은 마치 이야기를 풀어내듯 흐른다.\
-	<<elseif _step == 3>>\
-	줄 위에서 울림이 완성된다. 연주는 고요 속에서 깊은 여운을 남긴다.\
-	<<else>>\
-	칠현금의 소리는 이미 음악을 넘어선다. 연주는 사색과 경지를 담아 공간에 스며든다.\
-	<</if>>\
-<</if>>
-
-
-[[돌아가기|Hobby]]
+[[돌아가기|Hobby]]\
 <</if>>

@@ -1,8 +1,5 @@
 :: PlayerInit [system]
 
-<<if not $initDone>>
-	<<set $initDone = true>>
-
     <!-- 난이도에 따른 스탯 -->
     <<if $Rank eq "빈">>
         <<set $knowledge = 110>>
@@ -23,7 +20,7 @@
         <<set $politics = 90>>
         <<set $morality = 50>>
         <<set $attention = 15>>
-        <<set $money = { silver = 1000, gold = 1000 }>>
+        <<set $money = { silver: 1000, gold: 1000 }>>
 
         <<elseif $Rank eq "귀인">>
             <<set $knowledge = 25>>
@@ -109,10 +106,9 @@
             <<set $attention = 20>>
             <<set $money = { silver: 0, gold: 0 }>>
     <</if>>
-<</if>>
-
-
+<<goto "MyPalace">>
 <<if $my_palace is "naniegung">>
 <!--- 다른 이들과의 관계: 가까운 위치일수록 먼저 친해지고 시작>
 <!-- 위치에 따라 주목도 가감>
 <</if>>
+

@@ -1,5 +1,8 @@
 :: Shop_Music
 악기를 다루는 장인의 처소다.
+은전: <<print $money.silver>>
+금전: <<print $money.gold>>
+Rank: <<print $Rank>>
 
 <<if !$instruments.flute>>
 피리 | [[구매한다 (은전 50)|Buy_Flute]]

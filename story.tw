@@ -199,7 +199,7 @@
 </p>
 
 <br>
-[[황궁에 들어선다->MyPalace]]
+[[황궁에 들어선다->PlayerInit]]
 
 [[황궁에 들어서기 전 설명을 듣는다->explanation]]
 
@@ -225,5 +225,5 @@
 <<set _linkText = $my_palace + "에 들어선다">>
 
 <<link _linkText>>
-  <<goto "MyPalace">>
+  <<goto "PlayerInit">>
 <</link>>
