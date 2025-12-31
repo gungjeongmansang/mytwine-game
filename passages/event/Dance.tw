@@ -1,5 +1,4 @@
 :: Dance
-ㅇ
 <<addTime 60>>
 
 <<if $dance <= 50>>\
@@ -27,7 +26,7 @@
 :: Dance_Banquet
 연회
 <<set _roll = random(1,100)>>
-<<set _injuryRoll = randem(1,100)>>
+<<set _injuryRoll = random(1,100)>>
 <<if $dance <= 50>>\
     완벽 불가.\
     <<set $mental -= 15>>\
