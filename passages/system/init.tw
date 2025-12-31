@@ -13,3 +13,26 @@
 	bipa: false,
 	chilhyeon: false
 }>>
+
+<!--성별 기본값(순서대로 플레이어, 황제, 후궁)-->
+<<set $playerGender = "female">>
+<<set $emperorGender = "male">>
+<<set $concubineGender = "female">>
+
+<!-- 후궁 첫 등장에 넣어야 할 로직
+:: Init_Concubine
+
+<<set $npc.concubine = {}>>
+
+<<if $concubineGender == "female">>
+	<<set $npc.concubine.gender = "female">>
+<<elseif $concubineGender == "male">>
+	<<set $npc.concubine.gender = "male">>
+<<else>>
+	<<set $npc.concubine.gender =
+		random(0,1) == 0 ? "female" : "male">>
+<</if>>
+
+[[계속->ConcubineIntro]]
+
+-->

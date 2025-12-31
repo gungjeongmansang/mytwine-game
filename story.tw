@@ -199,9 +199,7 @@
 </p>
 
 <br>
-[[황궁에 들어선다->PlayerInit]]
-
-[[황궁에 들어서기 전 설명을 듣는다->explanation]]
+[[플레이어 성별 설정->Setup_PlayerGender]]
 
 
 /*
@@ -210,6 +208,49 @@
 경우에 따한 나와 무조건 반대 또는 나와 무조건 같은 성별이 나오게끔 하는 인물은
 따로 정할 예정
 */
+:: Setup_PlayerGender
+<h2>플레이어 성별 설정</h2>
+<label>
+  <<radiobutton "$playerGender" "female">>
+  여성
+</label>
+<label>
+  <<radiobutton "$playerGender" "male">>
+  남성
+</label>
+[[황제 성별 설정->Setup_EmperorGender]]
+
+:: Setup_EmperorGender
+<h2>황제 성별 설정</h2>
+<label>
+  <<radiobutton "$emperorGender" "female">>
+  여성
+</label>
+<label>
+  <<radiobutton "$emperorGender" "male">>
+  남성
+</label>
+[[후궁 성별 설정->Setup_ConcubineGender]]
+
+:: Setup_ConcubineGender
+<h2>후궁 성별 설정</h2>
+<!--여자, 남자 일괄, 혼합으로 해놨는데 수정하려면 할 수 있음-->
+<label>
+  <<radiobutton "$concubineGender" "female">>
+  여성 후궁만 등장
+</label>
+<label>
+  <<radiobutton "$concubineGender" "male">>
+  남성 후궁만 등장
+</label>
+<label>
+  <<radiobutton "$concubineGender" "mixed">>
+  혼합
+</label><br>
+
+[[황궁에 들어선다->PlayerInit]]
+
+[[황궁에 들어서기 전 설명을 듣는다->explanation]]
 
 :: explanation
 
