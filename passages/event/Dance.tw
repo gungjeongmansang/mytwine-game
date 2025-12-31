@@ -1,3 +1,86 @@
 :: Dance
 ㅇ
 <<addTime 60>>
+
+<<if $dance <= 50>>\
+    어설프다\
+<<elseif $dance <= 100>>\
+    실력이 느는 게 느껴진다.\
+<<elseif $dance <= 200>>\
+    춤선이 드러난다. 후궁들 중 평균은 한다.\
+<<elseif $dance <= 300>>\
+    점점 자연스러워진다. 후궁들 중 중상위\
+<<elseif $dance <= 400>>\
+    거의 완벽하다. 후궁들 중 상위\
+<<else>>\
+    완벽하다. 후궁들 중 최고다.\
+<</if>>\
+<!-- 보정 -->
+<<if $dance > 500>>\
+    <<set $dance = 500>>\
+<</if>>\
+<<if $dance < 0>>\
+    <<set $dance = 0>>\
+<</if>>\
+[[돌아가기->Hobby]]
+
+:: Dance_Banquet
+연회
+<<set _roll = random(1,100)>>
+<<set _injuryRoll = randem(1,100)>>
+<<if $dance <= 50>>\
+    완벽 불가.\
+    <<set $mental -= 15>>\
+<<elseif $dance <= 100>>\
+    <<if _roll <=20>>\
+        완벽하게 해낼 확률 20퍼\
+    <<else>>\
+        동작이 흐트러짐.\
+        <<if _injuryRoll <= 100>>\
+            몸이 다친 것이 티남.\
+            <<set $mental -= 30>>\
+        <</if>>\
+    <</if>>\
+<<elseif $dance <= 200>>\
+    <<if _roll <= 40>>\
+        완벽하게 해날 확률 40퍼\
+    <<else>>\
+        동작이 흐트러짐.\
+        <<if _injuryRoll <= 75>>\
+            몸이 다친 것이 티남.\
+            <<set $mental -= 25>>\
+        <</if>>\
+    <</if>>\
+<<elseif $dance <= 300>>\
+    <<if _roll <= 60>>\
+        완벽하게 해날 확률 60퍼\
+    <<else>>\
+        동작이 흐트러짐.\
+        <<if _injuryRoll <= 50>>\
+            몸이 다친 것이 티남\
+            <<set $mental -= 20>>\
+        <</if>>\
+    <</if>>\
+<<elseif $dance <= 400>>\
+    <<if _roll <= 80>>\
+        완벽하게 해낼 확률 80퍼\
+    <<else>>\
+        동작이 흐트러짐\
+        <<if _injuryRoll <= 75>>\
+            부상을 입었지만 티내지 않고 끝냄\
+            <<set $mental -= 10>>\
+        <</if>>\
+    <</if>>\
+<<else>>\
+    춤 완벽, 부상도 없음\
+<</if>>
+<!--피로도 쌓임-->
+<<set $fatigue += 3>>
+<!--보정-->
+<<if $dance > 500>>\
+    <<set $dance = 500>>\
+<</if>>\
+<<if $dance < 0>>\
+    <<set $dance = 0>>\
+<</if>>\
+[[연회 끝->MyPalace]]

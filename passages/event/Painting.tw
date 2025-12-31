@@ -1,3 +1,52 @@
 :: Painting
 ㅇ
 <<addTime 30>>
+
+<<set $fatigue += 1>>
+<<set $painting +=5>>
+
+<<if $painting <= 100>>\
+    서화\
+<<elseif $painting <=200>>\
+    부채화\
+<<elseif $painting <= 300>>\
+    우산화\
+<<elseif $painting <= 400>>\
+    인물화\
+<<else>>\
+    불화\
+<</if>>\
+<!--보정-->
+<<if $painting > 500>>\
+    <<set $painting = 500>>\
+<</if>>
+<<if $painting < 0>>\
+    <<set $painting = 0>>\
+<</if>>\
+
+:: Painting_Gift
+선물
+<<set _reaction = random(1,100)>>
+
+<!--기본 정신력 상승-->
+<<set $mental += 5>>
+
+<<if $painting <= 100>>\
+    서화 선물\
+<<elseif $painting <=200>>\
+    부채화 선물\
+<<elseif $painting <= 300>>\
+    우산화 선물\
+<<elseif $painting <= 400>>\
+    인물화 선물\
+<<else>>
+    불화 선물\
+<</if>>\
+<!--선물 반응 확률은 내가 임의로 정해놓음(70퍼센트긍정적)-->
+<<if _reaction <= 70>>\
+    반응 좋음\
+<<else>>\
+    반응 안 좋음\
+    <<set $mental -= 10>>\
+<</if>>\
+[[돌아간다->Hobby]]
