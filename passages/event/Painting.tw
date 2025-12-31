@@ -1,5 +1,4 @@
 :: Painting
-ㅇ
 <<addTime 30>>
 
 <<set $fatigue += 1>>
