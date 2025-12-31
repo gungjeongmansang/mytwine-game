@@ -210,43 +210,25 @@
 */
 :: Setup_PlayerGender
 <h2>플레이어 성별 설정</h2>
-<label>
-  <<radiobutton "$playerGender" "female">>
-  여성
-</label>
-<label>
-  <<radiobutton "$playerGender" "male">>
-  남성
-</label>
+  <<radiobutton "$playerGender" "female">> 여성
+  <<radiobutton "$playerGender" "male">> 남성
+
 [[황제 성별 설정->Setup_EmperorGender]]
 
 :: Setup_EmperorGender
 <h2>황제 성별 설정</h2>
-<label>
-  <<radiobutton "$emperorGender" "female">>
-  여성
-</label>
-<label>
-  <<radiobutton "$emperorGender" "male">>
-  남성
-</label>
+  <<radiobutton "$emperorGender" "female">> 여성
+  <<radiobutton "$emperorGender" "male">> 남성
+
 [[후궁 성별 설정->Setup_ConcubineGender]]
 
 :: Setup_ConcubineGender
 <h2>후궁 성별 설정</h2>
 <!--여자, 남자 일괄, 혼합으로 해놨는데 수정하려면 할 수 있음-->
-<label>
-  <<radiobutton "$concubineGender" "female">>
-  여성 후궁만 등장
-</label>
-<label>
-  <<radiobutton "$concubineGender" "male">>
-  남성 후궁만 등장
-</label>
-<label>
-  <<radiobutton "$concubineGender" "mixed">>
-  혼합
-</label><br>
+  <<radiobutton "$concubineGender" "female">> 여성 후궁만 등장
+  <<radiobutton "$concubineGender" "male">> 남성 후궁만 등장
+  <<radiobutton "$concubineGender" "mixed">> 혼합
+<br>
 
 [[황궁에 들어선다->PlayerInit]]
 
