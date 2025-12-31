@@ -297,9 +297,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;/p&gt;
 
 &lt;br&gt;
-[[황궁에 들어선다-&gt;PlayerInit]]
-
-[[황궁에 들어서기 전 설명을 듣는다-&gt;explanation]]
+[[플레이어 성별 설정-&gt;Setup_PlayerGender]]
 
 
 /*
@@ -307,7 +305,24 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 나를 포함한 사람들의 성별 설정
 경우에 따한 나와 무조건 반대 또는 나와 무조건 같은 성별이 나오게끔 하는 인물은
 따로 정할 예정
-*/</tw-passagedata><tw-passagedata pid="5" name="explanation" tags="" position="600,100" size="100,100">당신은 앞으로 &lt;&lt;print $my_palace&gt;&gt;에 기거하는 황제의 후궁으로서 살아가게 될 것입니다.
+*/</tw-passagedata><tw-passagedata pid="5" name="Setup_PlayerGender" tags="" position="600,100" size="100,100">&lt;h2&gt;플레이어 성별 설정&lt;/h2&gt;
+  &lt;&lt;radiobutton &quot;$playerGender&quot; &quot;female&quot;&gt;&gt; 여성
+  &lt;&lt;radiobutton &quot;$playerGender&quot; &quot;male&quot;&gt;&gt; 남성
+
+[[황제 성별 설정-&gt;Setup_EmperorGender]]</tw-passagedata><tw-passagedata pid="6" name="Setup_EmperorGender" tags="" position="725,100" size="100,100">&lt;h2&gt;황제 성별 설정&lt;/h2&gt;
+  &lt;&lt;radiobutton &quot;$emperorGender&quot; &quot;female&quot;&gt;&gt; 여성
+  &lt;&lt;radiobutton &quot;$emperorGender&quot; &quot;male&quot;&gt;&gt; 남성
+
+[[후궁 성별 설정-&gt;Setup_ConcubineGender]]</tw-passagedata><tw-passagedata pid="7" name="Setup_ConcubineGender" tags="" position="850,100" size="100,100">&lt;h2&gt;후궁 성별 설정&lt;/h2&gt;
+&lt;!--여자, 남자 일괄, 혼합으로 해놨는데 수정하려면 할 수 있음--&gt;
+  &lt;&lt;radiobutton &quot;$concubineGender&quot; &quot;female&quot;&gt;&gt; 여성 후궁만 등장
+  &lt;&lt;radiobutton &quot;$concubineGender&quot; &quot;male&quot;&gt;&gt; 남성 후궁만 등장
+  &lt;&lt;radiobutton &quot;$concubineGender&quot; &quot;mixed&quot;&gt;&gt; 혼합
+&lt;br&gt;
+
+[[황궁에 들어선다-&gt;PlayerInit]]
+
+[[황궁에 들어서기 전 설명을 듣는다-&gt;explanation]]</tw-passagedata><tw-passagedata pid="8" name="explanation" tags="" position="975,100" size="100,100">당신은 앞으로 &lt;&lt;print $my_palace&gt;&gt;에 기거하는 황제의 후궁으로서 살아가게 될 것입니다.
 &lt;&lt;print $my_palace&gt;&gt;에 대해 간단히 설명하자면 이렇습니다.
 
 후궁들이 기거하는 궁의 내부에는 크게 전전(前殿)과 후전(後殿), 배전(配殿)이 있습니다.
@@ -320,8 +335,8 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 &lt;&lt;link _linkText&gt;&gt;
   &lt;&lt;goto &quot;PlayerInit&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Book" tags="" position="725,100" size="100,100">&lt;&lt;addTime 60&gt;&gt;\
-&lt;&lt;goto &quot;Event_Book&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Event_Book" tags="" position="850,100" size="100,100">&lt;&lt;set _roll = random(1, 100)&gt;&gt;\
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="Book" tags="" position="1100,100" size="100,100">&lt;&lt;addTime 60&gt;&gt;\
+&lt;&lt;goto &quot;Event_Book&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="Event_Book" tags="" position="1225,100" size="100,100">&lt;&lt;set _roll = random(1, 100)&gt;&gt;\
 &lt;&lt;if _roll &lt;= 70&gt;&gt;\
 	&lt;&lt;set $bookResult = &quot;normal&quot;&gt;&gt;\
 &lt;&lt;elseif _roll &lt;= 90&gt;&gt;\
@@ -329,7 +344,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;else&gt;&gt;\
 	&lt;&lt;set $bookResult = &quot;bad&quot;&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;goto &quot;Result_Book&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="Result_Book" tags="" position="975,100" size="100,100">&lt;&lt;if $hour &lt; 12&gt;&gt;\
+&lt;&lt;goto &quot;Result_Book&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="Result_Book" tags="" position="100,225" size="100,100">&lt;&lt;if $hour &lt; 12&gt;&gt;\
 활기찬 오전, 황궁에는 아침을 시작한 궁인들이 분주하게 움직이는 소리로 가득하다. 당신은 따스한 햇볕이 드는 창가의 의자에 앉아 책장을 한 장씩 넘기기 시작한다.\
 &lt;&lt;elseif $hour &lt; 18&gt;&gt;\
 오찬 시간이 지난 오후는 궁인들의 적당한 말소리와 발걸음 소리로 당신의 귀를 간간이 간지럽힌다. 당신은 외실의 창가에 놓인 의자에 앉아 책장을 한 장씩 넘기기 시작한다.\
@@ -362,7 +377,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 이 황궁 속에서, 학식으로 당신과 견줄 사람은 아마도 황족이 유일할 것이다.\
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Hobby]]</tw-passagedata><tw-passagedata pid="9" name="Dance" tags="" position="1100,100" size="100,100">&lt;&lt;addTime 60&gt;&gt;
+[[돌아가기|Hobby]]</tw-passagedata><tw-passagedata pid="12" name="Dance" tags="" position="225,225" size="100,100">&lt;&lt;addTime 60&gt;&gt;
 
 &lt;&lt;if $dance &lt;= 50&gt;&gt;\
     어설프다\
@@ -384,7 +399,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;if $dance &lt; 0&gt;&gt;\
     &lt;&lt;set $dance = 0&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-[[돌아가기-&gt;Hobby]]</tw-passagedata><tw-passagedata pid="10" name="Dance_Banquet" tags="" position="1225,100" size="100,100">연회
+[[돌아가기-&gt;Hobby]]</tw-passagedata><tw-passagedata pid="13" name="Dance_Banquet" tags="" position="350,225" size="100,100">연회
 &lt;&lt;set _roll = random(1,100)&gt;&gt;
 &lt;&lt;set _injuryRoll = random(1,100)&gt;&gt;
 &lt;&lt;if $dance &lt;= 50&gt;&gt;\
@@ -442,16 +457,16 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;if $dance &lt; 0&gt;&gt;\
     &lt;&lt;set $dance = 0&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-[[연회 끝-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="11" name="Embroidery" tags="" position="100,225" size="100,100">ㅇ
-&lt;&lt;addTime 60&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="GardenEvent_1" tags="" position="225,225" size="100,100">50퍼
+[[연회 끝-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="14" name="Embroidery" tags="" position="475,225" size="100,100">ㅇ
+&lt;&lt;addTime 60&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="GardenEvent_1" tags="" position="600,225" size="100,100">50퍼
 &lt;br&gt;
 
-[[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="13" name="GardenEvent_2" tags="" position="350,225" size="100,100">30퍼
-[[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="14" name="GardenEvent_3" tags="" position="475,225" size="100,100">10퍼
-[[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="15" name="GardenEvent_4" tags="" position="600,225" size="100,100">5퍼
-[[궁궐로 돌아간다.-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="16" name="GardenEvent_5" tags="" position="725,225" size="100,100">5퍼
-[[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="17" name="Musical_Instrument" tags="" position="850,225" size="100,100">&lt;&lt;addTime 60&gt;&gt;\
-&lt;&lt;goto &quot;Event_Musical&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Event_Musical" tags="" position="975,225" size="100,100">&lt;&lt;set _roll = random(1, 100)&gt;&gt;\
+[[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="16" name="GardenEvent_2" tags="" position="725,225" size="100,100">30퍼
+[[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="17" name="GardenEvent_3" tags="" position="850,225" size="100,100">10퍼
+[[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="18" name="GardenEvent_4" tags="" position="975,225" size="100,100">5퍼
+[[궁궐로 돌아간다.-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="19" name="GardenEvent_5" tags="" position="1100,225" size="100,100">5퍼
+[[궁궐로 돌아간다-&gt;PalaceHub]]</tw-passagedata><tw-passagedata pid="20" name="Musical_Instrument" tags="" position="1225,225" size="100,100">&lt;&lt;addTime 60&gt;&gt;\
+&lt;&lt;goto &quot;Event_Musical&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="Event_Musical" tags="" position="100,350" size="100,100">&lt;&lt;set _roll = random(1, 100)&gt;&gt;\
 &lt;&lt;if _roll &lt;= 70&gt;&gt;\
 	&lt;&lt;set $MusicalResult = &quot;normal&quot;&gt;&gt;\
 &lt;&lt;elseif _roll &lt;= 90&gt;&gt;\
@@ -459,7 +474,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;else&gt;&gt;\
 	&lt;&lt;set $MusicalResult = &quot;bad&quot;&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-&lt;&lt;goto &quot;Result_Musical&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="Result_Musical" tags="" position="1100,225" size="100,100">&lt;&lt;if !$instruments.flute and !$instruments.jang and !$instruments.bipa and !$instruments.chilhyeon&gt;&gt;\
+&lt;&lt;goto &quot;Result_Musical&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="Result_Musical" tags="" position="225,350" size="100,100">&lt;&lt;if !$instruments.flute and !$instruments.jang and !$instruments.bipa and !$instruments.chilhyeon&gt;&gt;\
 악기를 연주하려면 악기가 필요한 법, 당신은 지금 보유한 악기가 없다.
 [[돌아가기|Hobby]]\
 &lt;&lt;else&gt;&gt;\
@@ -597,7 +612,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;/if&gt;&gt;\
 
 [[돌아가기|Hobby]]\
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Painting" tags="" position="1225,225" size="100,100">&lt;&lt;addTime 30&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Painting" tags="" position="350,350" size="100,100">&lt;&lt;addTime 30&gt;&gt;
 
 &lt;&lt;set $fatigue += 1&gt;&gt;
 &lt;&lt;set $painting +=5&gt;&gt;
@@ -619,7 +634,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 &lt;&lt;/if&gt;&gt;
 &lt;&lt;if $painting &lt; 0&gt;&gt;\
     &lt;&lt;set $painting = 0&gt;&gt;\
-&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="21" name="Painting_Gift" tags="" position="100,350" size="100,100">선물
+&lt;&lt;/if&gt;&gt;\</tw-passagedata><tw-passagedata pid="24" name="Painting_Gift" tags="" position="475,350" size="100,100">선물
 &lt;&lt;set _reaction = random(1,100)&gt;&gt;
 
 &lt;!--기본 정신력 상승--&gt;
@@ -643,22 +658,22 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
     반응 안 좋음\
     &lt;&lt;set $mental -= 10&gt;&gt;\
 &lt;&lt;/if&gt;&gt;\
-[[돌아간다-&gt;Hobby]]</tw-passagedata><tw-passagedata pid="22" name="EmperorHall" tags="" position="225,350" size="100,100">전각 근처는 고요하다.
+[[돌아간다-&gt;Hobby]]</tw-passagedata><tw-passagedata pid="25" name="EmperorHall" tags="" position="600,350" size="100,100">전각 근처는 고요하다.
 멀리서 희미한 목소리가 들려온다.
 
 (1) [[더 가까이 다가간다-&gt;Eavesdrop]]
-(2) [[위험을 느끼고 물러난다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="23" name="Eavesdrop" tags="" position="350,350" size="100,100">중요해 보이는 이야기가 오간다.
+(2) [[위험을 느끼고 물러난다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="26" name="Eavesdrop" tags="" position="725,350" size="100,100">중요해 보이는 이야기가 오간다.
 이곳에 오랫동안 머무르긴 위험하다.
 /* 여기서도 의심도나 위험도같은거 조절하면 좋을듯 */
 
 (1) [[조용히 자리를 뜬다-&gt;MyPalace]]
-(2) [[조금 더 엿듣는다-&gt;EavesdropMore]]</tw-passagedata><tw-passagedata pid="24" name="EavesdropMore" tags="" position="475,350" size="100,100">발소리가 다가온다.
+(2) [[조금 더 엿듣는다-&gt;EavesdropMore]]</tw-passagedata><tw-passagedata pid="27" name="EavesdropMore" tags="" position="850,350" size="100,100">발소리가 다가온다.
 
-[[황급히 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="25" name="Garden" tags="" position="600,350" size="100,100">정원이다.
+[[황급히 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="28" name="Garden" tags="" position="975,350" size="100,100">정원이다.
 
 (1) [[조용히 산책한다-&gt;GardenWalk]]
 (2) [[연못가에 앉아 쉰다-&gt;GardenRest]]
-(3) [[궁궐로 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="26" name="GardenWalk" tags="" position="725,350" size="100,100">&lt;&lt;set _roll = random(1, 100)&gt;&gt;
+(3) [[궁궐로 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="29" name="GardenWalk" tags="" position="1100,350" size="100,100">&lt;&lt;set _roll = random(1, 100)&gt;&gt;
 
 &lt;&lt;if _roll &lt;= 50&gt;&gt;
 	&lt;&lt;goto &quot;GardenEvent_1&quot;&gt;&gt;   /* 50% */
@@ -670,15 +685,15 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 	&lt;&lt;goto &quot;GardenEvent_4&quot;&gt;&gt;   /* 5% */
 &lt;&lt;else&gt;&gt;
 	&lt;&lt;goto &quot;GardenEvent_5&quot;&gt;&gt;   /* 5% */
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="GardenRest" tags="" position="850,350" size="100,100">연못가에 앉아 쉰다.  
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="GardenRest" tags="" position="1225,350" size="100,100">연못가에 앉아 쉰다.  
 잠시 시간을 보낸다.
 
-(1) [[이만 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="28" name="MyPalace" tags="" position="975,350" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt;에 도착했습니다. 
+(1) [[이만 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="31" name="MyPalace" tags="" position="100,475" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt;에 도착했습니다. 
 
-[[다음-&gt;FrontPalace]]</tw-passagedata><tw-passagedata pid="29" name="FrontPalace" tags="" position="1100,350" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 입구에 있습니다. 
+[[다음-&gt;FrontPalace]]</tw-passagedata><tw-passagedata pid="32" name="FrontPalace" tags="" position="225,475" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 입구에 있습니다. 
 
 [[외실로 향한다-&gt;OuterPalace_Front]]
-[[밖으로 향한다-&gt;outside]]</tw-passagedata><tw-passagedata pid="30" name="OuterPalace_Front" tags="" position="1225,350" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 외실에 있습니다.
+[[밖으로 향한다-&gt;outside]]</tw-passagedata><tw-passagedata pid="33" name="OuterPalace_Front" tags="" position="350,475" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 외실에 있습니다.
 
   [[내실로 향한다-&gt;InnerPalace_Front]]
   [[입구로 향한다-&gt;FrontPalace]]
@@ -686,37 +701,37 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
   [[누군가를 초대한다-&gt;Invite]]
   [[식사를 한다-&gt;Eat]]
   [[차를 마신다-&gt;Tea]]
-  [[외관을 확인한다-&gt;Mirror_Outer]]</tw-passagedata><tw-passagedata pid="31" name="Hobby" tags="" position="100,475" size="100,100">무엇을 하며 시간을 보낼까?
+  [[외관을 확인한다-&gt;Mirror_Outer]]</tw-passagedata><tw-passagedata pid="34" name="Hobby" tags="" position="475,475" size="100,100">무엇을 하며 시간을 보낼까?
 
 [[서책을 읽는다-&gt;Book]]
 [[악기 연주를 한다-&gt;Musical_Instrument]]
 [[무용을 연습한다-&gt;Dance]]
 [[그림을 그린다-&gt;Painting]]
 [[자수를 놓는다-&gt;Embroidery]]
-[[악기 구매-&gt;Shop_Music]]</tw-passagedata><tw-passagedata pid="32" name="Invite" tags="" position="225,475" size="100,100">누구를 초대할까?</tw-passagedata><tw-passagedata pid="33" name="Eat" tags="" position="350,475" size="100,100">식사는 식사 시간에만 토글되게 할까? 
-&lt;&lt;addTime 60&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="Tea" tags="" position="475,475" size="100,100">티타임
-&lt;&lt;addTime 15&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="Mirror_Outer" tags="" position="600,475" size="100,100">거울아거울아
-&lt;&lt;addTime 5&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="InnerPalace_Front" tags="" position="725,475" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 내실에 있습니다.
+[[악기 구매-&gt;Shop_Music]]</tw-passagedata><tw-passagedata pid="35" name="Invite" tags="" position="600,475" size="100,100">누구를 초대할까?</tw-passagedata><tw-passagedata pid="36" name="Eat" tags="" position="725,475" size="100,100">식사는 식사 시간에만 토글되게 할까? 
+&lt;&lt;addTime 60&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="Tea" tags="" position="850,475" size="100,100">티타임
+&lt;&lt;addTime 15&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="Mirror_Outer" tags="" position="975,475" size="100,100">거울아거울아
+&lt;&lt;addTime 5&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="InnerPalace_Front" tags="" position="1100,475" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 전전의 내실에 있습니다.
 
 [[외실로 향한다-&gt;OuterPalace_Front]]
 [[몸을 씻는다-&gt;bath]]
 [[잠에 든다-&gt;Sleep]]
 &lt;!-- 잠에 든다의 경우 시간 기능을 만들고 시간대에 따라 잠/낮잠으로 토글--&gt;
 [[무언가를 곰곰이 생각한다-&gt;Think]]
-&lt;!-- 생각한다의 경우 만들지말지 고민좀.. --&gt;</tw-passagedata><tw-passagedata pid="37" name="Sleep" tags="" position="850,475" size="100,100">&lt;!-- 내 피로도나 정신상태에 따라 문구 다르게 출력--&gt;
+&lt;!-- 생각한다의 경우 만들지말지 고민좀.. --&gt;</tw-passagedata><tw-passagedata pid="40" name="Sleep" tags="" position="1225,475" size="100,100">&lt;!-- 내 피로도나 정신상태에 따라 문구 다르게 출력--&gt;
 
-당신은 몸이 개운해지는 느낌과 함께 잠에서 깹니다.</tw-passagedata><tw-passagedata pid="38" name="Think" tags="" position="975,475" size="100,100">잠자리에 누운 채 이런저런 생각을 한다.
+당신은 몸이 개운해지는 느낌과 함께 잠에서 깹니다.</tw-passagedata><tw-passagedata pid="41" name="Think" tags="" position="100,600" size="100,100">잠자리에 누운 채 이런저런 생각을 한다.
 쉽게 잠들지는 못한다.
 /* 여기서 정신력이나 피로도같은거 조절하면 좋을듯 */`
 
-[[결국 잠든다-&gt;Sleep]]</tw-passagedata><tw-passagedata pid="39" name="bath" tags="" position="1100,475" size="100,100">따뜻한 물이 피로를 씻어낸다.
+[[결국 잠든다-&gt;Sleep]]</tw-passagedata><tw-passagedata pid="42" name="bath" tags="" position="225,600" size="100,100">따뜻한 물이 피로를 씻어낸다.
 
 (1) [[천천히 몸을 담근다-&gt;BathRelax]]
-(2) [[간단히 씻고 나온다-&gt;BathQuick]]</tw-passagedata><tw-passagedata pid="40" name="bathRelax" tags="" position="1225,475" size="100,100">몸이 나른해진다.
+(2) [[간단히 씻고 나온다-&gt;BathQuick]]</tw-passagedata><tw-passagedata pid="43" name="bathRelax" tags="" position="350,600" size="100,100">몸이 나른해진다.
 
-[[궁궐로 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="41" name="bathQuick" tags="" position="100,600" size="100,100">빠르게 몸을 씻고 나온다.
+[[궁궐로 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="44" name="bathQuick" tags="" position="475,600" size="100,100">빠르게 몸을 씻고 나온다.
 
-[[궁궐로 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="42" name="BackPalace" tags="" position="225,600" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 후전의 입구에 있습니다. 
+[[궁궐로 돌아간다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="45" name="BackPalace" tags="" position="600,600" size="100,100">당신은 &lt;&lt;print $my_palace&gt;&gt; 후전의 입구에 있습니다. 
 
 (1) [[내실로 향한다-&gt;InnerPalace_Back]]
 (2) [[외실로 향한다-&gt;OuterPalace_Back]]
@@ -729,7 +744,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 
 
-[[아침이 밝아온다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="43" name="InnerPalace_Back" tags="" position="350,600" size="100,100"></tw-passagedata><tw-passagedata pid="44" name="OuterPalace_Back" tags="" position="475,600" size="100,100"></tw-passagedata><tw-passagedata pid="45" name="outside" tags="" position="600,600" size="100,100"></tw-passagedata><tw-passagedata pid="46" name="Shop_Music" tags="" position="725,600" size="100,100">악기를 다루는 장인의 처소다.
+[[아침이 밝아온다-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="46" name="InnerPalace_Back" tags="" position="725,600" size="100,100"></tw-passagedata><tw-passagedata pid="47" name="OuterPalace_Back" tags="" position="850,600" size="100,100"></tw-passagedata><tw-passagedata pid="48" name="outside" tags="" position="975,600" size="100,100"></tw-passagedata><tw-passagedata pid="49" name="Shop_Music" tags="" position="1100,600" size="100,100">악기를 다루는 장인의 처소다.
 은전: &lt;&lt;print $money.silver&gt;&gt;
 금전: &lt;&lt;print $money.gold&gt;&gt;
 Rank: &lt;&lt;print $Rank&gt;&gt;
@@ -750,7 +765,7 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 칠현금 | [[구매한다 (은전 500)|Buy_Chilhyeon]]
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Hobby]]</tw-passagedata><tw-passagedata pid="47" name="Buy_Flute" tags="" position="850,600" size="100,100">&lt;&lt;if $money.silver &lt; 50&gt;&gt;
+[[돌아가기|Hobby]]</tw-passagedata><tw-passagedata pid="50" name="Buy_Flute" tags="" position="1225,600" size="100,100">&lt;&lt;if $money.silver &lt; 50&gt;&gt;
 은전이 부족하다. 장인은 고개를 젓는다.
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set $money.silver -= 50&gt;&gt;
@@ -758,7 +773,7 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 장인은 정성스럽게 다듬은 피리를 당신의 손에 쥐여준다.
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="48" name="Buy_Jang" tags="" position="975,600" size="100,100">&lt;&lt;if $money.silver &lt; 120&gt;&gt;
+[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="51" name="Buy_Jang" tags="" position="100,725" size="100,100">&lt;&lt;if $money.silver &lt; 120&gt;&gt;
 은전이 부족하다. 장인은 고개를 젓는다.
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set $money.silver -= 120&gt;&gt;
@@ -766,7 +781,7 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 쟁을 조심스럽게 건네받는다. 낮은 울림이 손끝에 남는다.
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="49" name="Buy_Bipa" tags="" position="1100,600" size="100,100">&lt;&lt;if $money.silver &lt; 300&gt;&gt;
+[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="52" name="Buy_Bipa" tags="" position="225,725" size="100,100">&lt;&lt;if $money.silver &lt; 300&gt;&gt;
 은전이 부족하다. 장인은 말없이 손을 거둔다.
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set $money.silver -= 300&gt;&gt;
@@ -774,7 +789,7 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 비파를 품에 안자 묵직한 무게감이 전해진다.
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="50" name="Buy_Chilhyeon" tags="" position="1225,600" size="100,100">&lt;&lt;if $money.silver &lt; 500&gt;&gt;
+[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="53" name="Buy_Chilhyeon" tags="" position="350,725" size="100,100">&lt;&lt;if $money.silver &lt; 500&gt;&gt;
 은전이 부족하다. 장인은 고개를 젓는다.
 &lt;&lt;else&gt;&gt;
 &lt;&lt;set $money.silver -= 500&gt;&gt;
@@ -782,11 +797,11 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 칠현금의 줄이 낮게 울리며, 깊은 음이 공기를 가른다.
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="51" name="StoryAuthor" tags="" position="100,725" size="100,100">&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
+[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="54" name="StoryAuthor" tags="" position="475,725" size="100,100">&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
   &lt;&lt;print $day&gt;&gt;일\
   &lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&#39;0&#39;)&gt;&gt;
-  &lt;&lt;print $season&gt;&gt;\</tw-passagedata><tw-passagedata pid="52" name="StoryMenu" tags="" position="225,725" size="100,100">[[관계]]
-[[스탯]]</tw-passagedata><tw-passagedata pid="53" name="StoryInit" tags="" position="350,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
+  &lt;&lt;print $season&gt;&gt;\</tw-passagedata><tw-passagedata pid="55" name="StoryMenu" tags="" position="600,725" size="100,100">[[관계]]
+[[스탯]]</tw-passagedata><tw-passagedata pid="56" name="StoryInit" tags="" position="725,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
 &lt;&lt;set $hour = 8&gt;&gt;
 &lt;&lt;set $minute = 0&gt;&gt;
 &lt;&lt;set $season = &quot;봄&quot;&gt;&gt;
@@ -799,11 +814,31 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 	jang: false,
 	bipa: false,
 	chilhyeon: false
-}&gt;&gt;</tw-passagedata><tw-passagedata pid="54" name="LoginCheck" tags="" position="475,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
+}&gt;&gt;
+
+&lt;!--성별 기본값(순서대로 플레이어, 황제, 후궁)--&gt;
+&lt;&lt;set $playerGender = &quot;female&quot;&gt;&gt;
+&lt;&lt;set $emperorGender = &quot;male&quot;&gt;&gt;
+&lt;&lt;set $concubineGender = &quot;female&quot;&gt;&gt;
+
+&lt;!-- 후궁 첫 등장에 넣어야 할 로직</tw-passagedata><tw-passagedata pid="57" name="Init_Concubine" tags="" position="850,725" size="100,100">&lt;&lt;set $npc.concubine = {}&gt;&gt;
+
+&lt;&lt;if $concubineGender == &quot;female&quot;&gt;&gt;
+	&lt;&lt;set $npc.concubine.gender = &quot;female&quot;&gt;&gt;
+&lt;&lt;elseif $concubineGender == &quot;male&quot;&gt;&gt;
+	&lt;&lt;set $npc.concubine.gender = &quot;male&quot;&gt;&gt;
+&lt;&lt;else&gt;&gt;
+	&lt;&lt;set $npc.concubine.gender =
+		random(0,1) == 0 ? &quot;female&quot; : &quot;male&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+
+[[계속-&gt;ConcubineIntro]]
+
+--&gt;</tw-passagedata><tw-passagedata pid="58" name="LoginCheck" tags="" position="975,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
 	[[계속-&gt;MainMenu]]
 &lt;&lt;else&gt;&gt;
 	[[계속-&gt;Login]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="Login" tags="" position="600,725" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="Login" tags="" position="1100,725" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
 
 &lt;&lt;script&gt;&gt;
 (function () {
@@ -879,20 +914,20 @@ window.doLogin = function () {
 		alert(&quot;서버 연결 실패&quot;);
 	});
 };
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="56" name="PagesEnter" tags="" position="725,725" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
-[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="57" name="Signup" tags="" position="850,725" size="100,100">회원가입 기능은 추후 구현 예정입니다.
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="PagesEnter" tags="" position="1225,725" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
+[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="61" name="Signup" tags="" position="100,850" size="100,100">회원가입 기능은 추후 구현 예정입니다.
 
-[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="58" name="MainMenu" tags="" position="975,725" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
+[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="62" name="MainMenu" tags="" position="225,850" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
 
 (1) [[새 게임-&gt;NewGame]]  
-(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="59" name="NewGame" tags="" position="1100,725" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
-[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="60" name="ContinueCheck" tags="" position="1225,725" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
+(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="63" name="NewGame" tags="" position="350,850" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
+[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="64" name="ContinueCheck" tags="" position="475,850" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
 	[[이어하기-&gt;LoadGame]]
 &lt;&lt;else&gt;&gt;
 	저장된 데이터가 없습니다.&lt;br&gt;
 	자동으로 새 게임을 시작합니다.&lt;br&gt;&lt;br&gt;
 	[[시작-&gt;prologue]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="LoadGame" tags="" position="100,850" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="LoadGame" tags="" position="600,850" size="100,100">&lt;&lt;script&gt;&gt;
 /*
 서버 구현 예정:
 
@@ -905,7 +940,7 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 */
 &lt;&lt;/script&gt;&gt;
 
-[[계속-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="62" name="관계" tags="" position="225,850" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="63" name="PlayerInit" tags="system" position="350,850" size="100,100">&lt;!-- 난이도에 따른 스탯 --&gt;
+[[계속-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="66" name="관계" tags="" position="725,850" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="67" name="PlayerInit" tags="system" position="850,850" size="100,100">&lt;!-- 난이도에 따른 스탯 --&gt;
     &lt;&lt;if $Rank eq &quot;빈&quot;&gt;&gt;
         &lt;&lt;set $knowledge = 110&gt;&gt;
         &lt;&lt;set $music = 60&gt;&gt;
@@ -1015,7 +1050,7 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 &lt;&lt;if $my_palace is &quot;naniegung&quot;&gt;&gt;
 &lt;!--- 다른 이들과의 관계: 가까운 위치일수록 먼저 친해지고 시작&gt;
 &lt;!-- 위치에 따라 주목도 가감&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="64" name="스탯" tags="" position="475,850" size="100,100">&lt;&lt;print $knowledge&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="스탯" tags="" position="975,850" size="100,100">&lt;&lt;print $knowledge&gt;&gt;
     &lt;&lt;print $music&gt;&gt;
     &lt;&lt;print $dance&gt;&gt;
     &lt;&lt;print $painting&gt;&gt;
@@ -1034,11 +1069,11 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
     &lt;&lt;print $morality&gt;&gt;
     &lt;&lt;print $attention&gt;&gt;
     &lt;&lt;print $money ? $money.silver : 0&gt;&gt;
-    &lt;&lt;print $money ? $money.gold : 0&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="TimeInit" tags="startup" position="600,850" size="100,100">/* 일일 처리용 초기값 */
+    &lt;&lt;print $money ? $money.gold : 0&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="TimeInit" tags="startup" position="1100,850" size="100,100">/* 일일 처리용 초기값 */
 
 &lt;&lt;set $dailyAction = 0&gt;&gt;
 &lt;&lt;set $lastProcessedDay = 1&gt;&gt;
-&lt;&lt;set $isSleeping = false&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="TimeWidgets" tags="widget" position="725,850" size="100,100">/* =========================
+&lt;&lt;set $isSleeping = false&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="TimeWidgets" tags="widget" position="1225,850" size="100,100">/* =========================
    TIME ADD WIDGET
    ========================= */
 
@@ -1064,13 +1099,13 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 	&lt;&lt;/if&gt;&gt;
 
 	&lt;&lt;include &quot;CheckSeason&quot;&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="67" name="OnNewDay" tags="system" position="850,850" size="100,100">/* =========================
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="OnNewDay" tags="system" position="100,975" size="100,100">/* =========================
    NEW DAY HOOK (NO OUTPUT)
    ========================= */
 
 &lt;&lt;set $dailyAction = 0&gt;&gt;
 &lt;&lt;set $isSleeping = false&gt;&gt;
-&lt;&lt;set $lastProcessedDay = $day&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="CheckSeason" tags="system" position="975,850" size="100,100">/* =========================
+&lt;&lt;set $lastProcessedDay = $day&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="CheckSeason" tags="system" position="225,975" size="100,100">/* =========================
    SEASON SYSTEM (120 days)
    ========================= */
 
