@@ -1,16 +1,32 @@
 :: StoryJavascript [script]
 (function () {
-    document.addEventListener("keydown", function (e){
-        if (e.key >= "1" && e.key <= "9"){
+
+    document.addEventListener("keydown", function (e) {
+
+        // 🔒 1️⃣ 입력 중이면 단축키 무시
+        const active = document.activeElement;
+        if (
+            active &&
+            (active.tagName === "INPUT" ||
+             active.tagName === "TEXTAREA" ||
+             active.isContentEditable)
+        ) {
+            return;
+        }
+
+        // 🔢 2️⃣ 숫자 1~9만 처리
+        if (e.key >= "1" && e.key <= "9") {
             const index = parseInt(e.key, 10) - 1;
 
             const links = document.querySelectorAll(
                 "#passages a.internal, #passages a.link-internal"
             );
 
-            if (links[index]){
+            if (links[index]) {
                 links[index].click();
+                e.preventDefault(); // 🔒 기본 동작 차단
             }
         }
     });
+
 })();
