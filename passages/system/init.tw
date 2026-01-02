@@ -1,4 +1,5 @@
-:: StoryInit
+:: StoryInit [storyinit]
+<<set setup.uiBar = true>>
 <<set $day = 1>>
 <<set $hour = 8>>
 <<set $minute = 0>>
@@ -6,6 +7,7 @@
 
 <<set $isLogin = false>>
 <<set $hasSave = false>>
+<<set $isPagesMode = false>>
 
 <<set $instruments = {
 	flute: false,

@@ -1,9 +1,21 @@
-:: StoryAuthor
+:: StoryCaption [storycaption]
+<div id="time-ui">
   <b>시간</b><br>
   <<print $day>>일\
   <<print $hour>>:<<print String($minute).padStart(2,'0')>>
   <<print $season>>\
+</div>
 
-:: StoryMenu
+:: StoryMenu [storymenu]
 [[관계]]
 [[스탯]]
+
+:: StoryStylesheet [stylesheet]
+#ui-bar {
+  display: block !important;
+  visibility: visible !important;
+}
+
+#time-ui {
+  font-size: 14px;
+}
