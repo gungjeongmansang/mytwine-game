@@ -37,7 +37,9 @@ GitHub Pages에서는 서버 기능이 제공되지 않습니다.<br>
 <input id="login_id" placeholder="ID"><br>
 <input id="login_pw" type="password" placeholder="Password"><br><br>
 
-<button onclick="doLogin()">로그인</button><br><br>
+<<button "로그인">>
+  <<run doLogin()>>
+<</button>>
 
 [[회원가입->Signup]]
 

@@ -104,20 +104,43 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://871FEB02-5811-4B6E-BC48-7DE465759CFD// --><tw-storydata name="궁정만상宮廷萬象" startnode="1" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="871FEB02-5811-4B6E-BC48-7DE465759CFD" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">(function () {
-    document.addEventListener("keydown", function (e){
-        if (e.key >= "1" && e.key <= "9"){
+	<!-- UUID://871FEB02-5811-4B6E-BC48-7DE465759CFD// --><tw-storydata name="궁정만상宮廷萬象" startnode="1" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="871FEB02-5811-4B6E-BC48-7DE465759CFD" zoom="1" format="SugarCube" format-version="2.37.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">#ui-bar {
+  display: block !important;
+  visibility: visible !important;
+}
+
+#time-ui {
+  font-size: 14px;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">(function () {
+
+    document.addEventListener("keydown", function (e) {
+
+        // 🔒 1️⃣ 입력 중이면 단축키 무시
+        const active = document.activeElement;
+        if (
+            active &&
+            (active.tagName === "INPUT" ||
+             active.tagName === "TEXTAREA" ||
+             active.isContentEditable)
+        ) {
+            return;
+        }
+
+        // 🔢 2️⃣ 숫자 1~9만 처리
+        if (e.key >= "1" && e.key <= "9") {
             const index = parseInt(e.key, 10) - 1;
 
             const links = document.querySelectorAll(
                 "#passages a.internal, #passages a.link-internal"
             );
 
-            if (links[index]){
+            if (links[index]) {
                 links[index].click();
+                e.preventDefault(); // 🔒 기본 동작 차단
             }
         }
     });
+
 })();</script><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">**궁정만상(宮廷萬象): The Thousand Paths**
 
 황궁은 하나의 세계이며, 그 안에는 수만 개의 삶과 결말이 공존합니다.
@@ -854,17 +877,21 @@ window.doSignup = function () {
     alert(&quot;서버 연결 실패&quot;);
   });
 };
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="StoryAuthor" tags="" position="600,725" size="100,100">&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="StoryCaption" tags="storycaption" position="600,725" size="100,100">&lt;div id=&quot;time-ui&quot;&gt;
+  &lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
   &lt;&lt;print $day&gt;&gt;일\
   &lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&#39;0&#39;)&gt;&gt;
-  &lt;&lt;print $season&gt;&gt;\</tw-passagedata><tw-passagedata pid="56" name="StoryMenu" tags="" position="725,725" size="100,100">[[관계]]
-[[스탯]]</tw-passagedata><tw-passagedata pid="57" name="StoryInit" tags="" position="850,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
+  &lt;&lt;print $season&gt;&gt;\
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="56" name="StoryMenu" tags="storymenu" position="725,725" size="100,100">[[관계]]
+[[스탯]]</tw-passagedata><tw-passagedata pid="57" name="StoryInit" tags="storyinit" position="850,725" size="100,100">&lt;&lt;set setup.uiBar = true&gt;&gt;
+&lt;&lt;set $day = 1&gt;&gt;
 &lt;&lt;set $hour = 8&gt;&gt;
 &lt;&lt;set $minute = 0&gt;&gt;
 &lt;&lt;set $season = &quot;봄&quot;&gt;&gt;
 
 &lt;&lt;set $isLogin = false&gt;&gt;
 &lt;&lt;set $hasSave = false&gt;&gt;
+&lt;&lt;set $isPagesMode = false&gt;&gt;
 
 &lt;&lt;set $instruments = {
 	flute: false,
@@ -926,7 +953,9 @@ GitHub Pages에서는 서버 기능이 제공되지 않습니다.&lt;br&gt;
 &lt;input id=&quot;login_id&quot; placeholder=&quot;ID&quot;&gt;&lt;br&gt;
 &lt;input id=&quot;login_pw&quot; type=&quot;password&quot; placeholder=&quot;Password&quot;&gt;&lt;br&gt;&lt;br&gt;
 
-&lt;button onclick=&quot;doLogin()&quot;&gt;로그인&lt;/button&gt;&lt;br&gt;&lt;br&gt;
+&lt;&lt;button &quot;로그인&quot;&gt;&gt;
+  &lt;&lt;run doLogin()&gt;&gt;
+&lt;&lt;/button&gt;&gt;
 
 [[회원가입-&gt;Signup]]
 
