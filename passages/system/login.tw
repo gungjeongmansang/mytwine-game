@@ -88,11 +88,6 @@ window.doLogin = function () {
 <<set $isLogin = true>>
 [[게임 시작->MainMenu]]
 
-:: Signup
-회원가입 기능은 추후 구현 예정입니다.
-
-[[로그인 화면으로 돌아가기->Login]]
-
 :: MainMenu
 <h2>메인 메뉴</h2>
 
