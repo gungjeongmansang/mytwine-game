@@ -797,11 +797,13 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 칠현금의 줄이 낮게 울리며, 깊은 음이 공기를 가른다.
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="54" name="StoryAuthor" tags="" position="475,725" size="100,100">&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
+[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="54" name="Signup" tags="" position="475,725" size="100,100">회원가입 기능은 추후 구현 예정입니다.
+
+[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="55" name="StoryAuthor" tags="" position="600,725" size="100,100">&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
   &lt;&lt;print $day&gt;&gt;일\
   &lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&#39;0&#39;)&gt;&gt;
-  &lt;&lt;print $season&gt;&gt;\</tw-passagedata><tw-passagedata pid="55" name="StoryMenu" tags="" position="600,725" size="100,100">[[관계]]
-[[스탯]]</tw-passagedata><tw-passagedata pid="56" name="StoryInit" tags="" position="725,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
+  &lt;&lt;print $season&gt;&gt;\</tw-passagedata><tw-passagedata pid="56" name="StoryMenu" tags="" position="725,725" size="100,100">[[관계]]
+[[스탯]]</tw-passagedata><tw-passagedata pid="57" name="StoryInit" tags="" position="850,725" size="100,100">&lt;&lt;set $day = 1&gt;&gt;
 &lt;&lt;set $hour = 8&gt;&gt;
 &lt;&lt;set $minute = 0&gt;&gt;
 &lt;&lt;set $season = &quot;봄&quot;&gt;&gt;
@@ -821,7 +823,7 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 &lt;&lt;set $emperorGender = &quot;male&quot;&gt;&gt;
 &lt;&lt;set $concubineGender = &quot;female&quot;&gt;&gt;
 
-&lt;!-- 후궁 첫 등장에 넣어야 할 로직</tw-passagedata><tw-passagedata pid="57" name="Init_Concubine" tags="" position="850,725" size="100,100">&lt;&lt;set $npc.concubine = {}&gt;&gt;
+&lt;!-- 후궁 첫 등장에 넣어야 할 로직</tw-passagedata><tw-passagedata pid="58" name="Init_Concubine" tags="" position="975,725" size="100,100">&lt;&lt;set $npc.concubine = {}&gt;&gt;
 
 &lt;&lt;if $concubineGender == &quot;female&quot;&gt;&gt;
 	&lt;&lt;set $npc.concubine.gender = &quot;female&quot;&gt;&gt;
@@ -834,11 +836,11 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 
 [[계속-&gt;ConcubineIntro]]
 
---&gt;</tw-passagedata><tw-passagedata pid="58" name="LoginCheck" tags="" position="975,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
+--&gt;</tw-passagedata><tw-passagedata pid="59" name="LoginCheck" tags="" position="1100,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
 	[[계속-&gt;MainMenu]]
 &lt;&lt;else&gt;&gt;
 	[[계속-&gt;Login]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="59" name="Login" tags="" position="1100,725" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="Login" tags="" position="1225,725" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
 
 &lt;&lt;script&gt;&gt;
 (function () {
@@ -914,10 +916,8 @@ window.doLogin = function () {
 		alert(&quot;서버 연결 실패&quot;);
 	});
 };
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="PagesEnter" tags="" position="1225,725" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
-[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="61" name="Signup" tags="" position="100,850" size="100,100">회원가입 기능은 추후 구현 예정입니다.
-
-[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="62" name="MainMenu" tags="" position="225,850" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="PagesEnter" tags="" position="100,850" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
+[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="62" name="MainMenu" tags="" position="225,850" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
 
 (1) [[새 게임-&gt;NewGame]]  
 (2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="63" name="NewGame" tags="" position="350,850" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
