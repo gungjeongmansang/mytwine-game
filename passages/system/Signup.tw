@@ -1,45 +1,59 @@
-::Signup
-<h2>회원가입</h2>>
+:: Signup
+<h2 style="text-align:center;">회원가입</h2>
+
+<div style="max-width:320px; margin:0 auto;">
 
 아이디
-<input id="su_username">
-비밀번호
-<input id="su_pw" type="password">
-이메일
-<input id="su_email" type="email"><br>
+<input id="su_username" type="text" style="width:100%;">
 
-<button onclick-"doSignup()">회원가입</button><br>
+비밀번호
+<input id="su_pw" type="password" style="width:100%;">
+
+이메일
+<input id="su_email" type="email" style="width:100%;">
+
+<<button "회원가입">>
+  <<run doSignup()>>
+<</button>>
 
 [[로그인으로 돌아가기->Login]]
 
+</div>
+
 <<script>>
+/* 회원가입 처리 함수 */
 window.doSignup = function () {
-    const username = document.getElementById("su_username").value.trim();
-    const pw = document.getElementById("su_pw").value.trim();
-    const email = document.getElementById("su_email").value.trim();
 
-    if(!username || !pw || !email){
-        alert("모든 항목을 입력하세요.");
-        return;
+  const username = document.getElementById("su_username").value.trim();
+  const pw = document.getElementById("su_pw").value.trim();
+  const email = document.getElementById("su_email").value.trim();
+
+  if (!username || !pw || !email) {
+    alert("모든 항목을 입력하세요.");
+    return;
+  }
+
+  fetch("/myTwine/signup.jsp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body:
+      "username=" + encodeURIComponent(username) +
+      "&pw=" + encodeURIComponent(pw) +
+      "&email=" + encodeURIComponent(email)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok) {
+      alert("회원가입 성공!");
+      Engine.play("Login");
+    } else {
+      alert(data.msg || "회원가입 실패");
     }
-
-    fetch("/myTwine/Signup.jsp", {
-        method: "POST",
-        headers: { "Content-type": "application/x-www-from-urlencoded" },
-        body:
-            "username=" + encodeURIComponent(username) +
-            "&pw=" + encodeURIComponent(pw) +
-            "&email=" + encodeURIComponent(email)
-    })
-    .then(res => res.json())
-    .then(data -> {
-        if (data.ok) {
-            alert("회원가입 성공");
-            Engine.play("Login");
-        } else {
-            alert(data.msg);
-        }
-    })
-    .catch(() => alert("서버 오류"));
+  })
+  .catch(() => {
+    alert("서버 연결 실패");
+  });
 };
 <</script>>

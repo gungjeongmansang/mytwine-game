@@ -797,9 +797,50 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 칠현금의 줄이 낮게 울리며, 깊은 음이 공기를 가른다.
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="54" name="Signup" tags="" position="475,725" size="100,100">회원가입 기능은 추후 구현 예정입니다.
+[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="54" name="Signup" tags="" position="475,725" size="100,100">&lt;h2&gt;회원가입&lt;/h2&gt;&gt;
 
-[[로그인 화면으로 돌아가기-&gt;Login]]</tw-passagedata><tw-passagedata pid="55" name="StoryAuthor" tags="" position="600,725" size="100,100">&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
+아이디
+&lt;input id=&quot;su_username&quot;&gt;
+비밀번호
+&lt;input id=&quot;su_pw&quot; type=&quot;password&quot;&gt;
+이메일
+&lt;input id=&quot;su_email&quot; type=&quot;email&quot;&gt;&lt;br&gt;
+
+&lt;button onclick-&quot;doSignup()&quot;&gt;회원가입&lt;/button&gt;&lt;br&gt;
+
+[[로그인으로 돌아가기-&gt;Login]]
+
+&lt;&lt;script&gt;&gt;
+window.doSignup = function () {
+    const username = document.getElementById(&quot;su_username&quot;).value.trim();
+    const pw = document.getElementById(&quot;su_pw&quot;).value.trim();
+    const email = document.getElementById(&quot;su_email&quot;).value.trim();
+
+    if(!username || !pw || !email){
+        alert(&quot;모든 항목을 입력하세요.&quot;);
+        return;
+    }
+
+    fetch(&quot;/myTwine/Signup.jsp&quot;, {
+        method: &quot;POST&quot;,
+        headers: { &quot;Content-type&quot;: &quot;application/x-www-from-urlencoded&quot; },
+        body:
+            &quot;username=&quot; + encodeURIComponent(username) +
+            &quot;&amp;pw=&quot; + encodeURIComponent(pw) +
+            &quot;&amp;email=&quot; + encodeURIComponent(email)
+    })
+    .then(res =&gt; res.json())
+    .then(data -&gt; {
+        if (data.ok) {
+            alert(&quot;회원가입 성공&quot;);
+            Engine.play(&quot;Login&quot;);
+        } else {
+            alert(data.msg);
+        }
+    })
+    .catch(() =&gt; alert(&quot;서버 오류&quot;));
+};
+&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="StoryAuthor" tags="" position="600,725" size="100,100">&lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
   &lt;&lt;print $day&gt;&gt;일\
   &lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&#39;0&#39;)&gt;&gt;
   &lt;&lt;print $season&gt;&gt;\</tw-passagedata><tw-passagedata pid="56" name="StoryMenu" tags="" position="725,725" size="100,100">[[관계]]
