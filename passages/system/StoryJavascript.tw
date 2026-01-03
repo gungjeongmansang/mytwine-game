@@ -1,9 +1,10 @@
 :: StoryJavascript [script]
+// 키보드 입력 함수
 (function () {
 
     document.addEventListener("keydown", function (e) {
 
-        // 🔒 1️⃣ 입력 중이면 단축키 무시
+        // 입력 중이면 단축키 무시
         const active = document.activeElement;
         if (
             active &&
@@ -14,7 +15,7 @@
             return;
         }
 
-        // 🔢 2️⃣ 숫자 1~9만 처리
+        // 숫자 1~9만 처리
         if (e.key >= "1" && e.key <= "9") {
             const index = parseInt(e.key, 10) - 1;
 
@@ -30,3 +31,77 @@
     });
 
 })();
+
+
+// 회원가입 함수
+window.doSignup = function () {
+
+  const username = document.getElementById("su_username").value.trim();
+  const pw = document.getElementById("su_pw").value.trim();
+  const pwCheck = document.getElementById("su_pw_check").value.trim();
+  const email = document.getElementById("su_email").value.trim();
+
+  if (!username || !pw || !pwCheck || !email) {
+    alert("모든 항목을 입력하세요.");
+    return;
+  }
+
+  if (pw !== pwCheck) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+
+  fetch("/myTwine/signup.jsp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body:
+      "username=" + encodeURIComponent(username) +
+      "&pw=" + encodeURIComponent(pw) +
+      "&email=" + encodeURIComponent(email)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok) {
+      alert("회원가입 성공!");
+      Engine.play("Login");
+    } else {
+      alert(data.msg || "회원가입 실패");
+    }
+  })
+  .catch(() => {
+    alert("서버 연결 실패");
+  });
+};
+
+
+// 아이디 찾기 함수
+window.findId = function () {
+
+  const email = document.getElementById("find_email").value.trim();
+
+  if (!email) {
+    alert("이메일을 입력하세요.");
+    return;
+  }
+
+  fetch("/myTwine/findId.jsp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: "email=" + encodeURIComponent(email)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok) {
+      alert("당신의 아이디는: " + data.username);
+    } else {
+      alert(data.msg || "아이디를 찾을 수 없습니다.");
+    }
+  })
+  .catch(() => {
+    alert("서버 연결 실패");
+  });
+};
