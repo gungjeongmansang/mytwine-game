@@ -2,7 +2,7 @@
 <h2 style="text-align:center;">아이디 찾기</h2>
 <div style="max-width:320px; margin:0 auto;">
 가입할 때 사용한 이메일
-<input id-"find_email" type="email" style="width:100%">
+<input id="find_email" type="email" style="width:100%">
 <br>
 
 <<button "아이디 찾기">>

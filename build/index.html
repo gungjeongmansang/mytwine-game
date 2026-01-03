@@ -934,7 +934,20 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 칠현금의 줄이 낮게 울리며, 깊은 음이 공기를 가른다.
 &lt;&lt;/if&gt;&gt;
 
-[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="54" name="Signup" tags="" position="475,725" size="100,100">&lt;h2 style=&quot;text-align:center;&quot;&gt;회원가입&lt;/h2&gt;
+[[돌아가기|Shop_Music]]</tw-passagedata><tw-passagedata pid="54" name="FindId" tags="" position="475,725" size="100,100">&lt;h2 style=&quot;text-align:center;&quot;&gt;아이디 찾기&lt;/h2&gt;
+&lt;div style=&quot;max-width:320px; margin:0 auto;&quot;&gt;
+가입할 때 사용한 이메일
+&lt;input id-&quot;find_email&quot; type=&quot;email&quot; style=&quot;width:100%&quot;&gt;
+&lt;br&gt;
+
+&lt;&lt;button &quot;아이디 찾기&quot;&gt;&gt;
+    &lt;&lt;run findId()&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;br&gt;
+[[로그인으로 돌아가기-&gt;Login]]
+
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="55" name="Signup" tags="" position="600,725" size="100,100">&lt;h2 style=&quot;text-align:center;&quot;&gt;회원가입&lt;/h2&gt;
 
 &lt;div style=&quot;max-width:320px; margin:0 auto;&quot;&gt;
 
@@ -956,56 +969,13 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 
 [[로그인으로 돌아가기-&gt;Login]]
 
-&lt;/div&gt;
-
-&lt;&lt;script&gt;&gt;
-window.doSignup = function () {
-
-  const username = document.getElementById(&quot;su_username&quot;).value.trim();
-  const pw = document.getElementById(&quot;su_pw&quot;).value.trim();
-  const pwCheck = document.getElementById(&quot;su_pw_check&quot;).value.trim();
-  const email = document.getElementById(&quot;su_email&quot;).value.trim();
-
-  if (!username || !pw || !pwCheck || !email) {
-    alert(&quot;모든 항목을 입력하세요.&quot;);
-    return;
-  }
-
-  if (pw !== pwCheck) {
-    alert(&quot;비밀번호가 일치하지 않습니다.&quot;);
-    return;
-  }
-
-  fetch(&quot;/myTwine/signup.jsp&quot;, {
-    method: &quot;POST&quot;,
-    headers: {
-      &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;
-    },
-    body:
-      &quot;username=&quot; + encodeURIComponent(username) +
-      &quot;&amp;pw=&quot; + encodeURIComponent(pw) +
-      &quot;&amp;email=&quot; + encodeURIComponent(email)
-  })
-  .then(res =&gt; res.json())
-  .then(data =&gt; {
-    if (data.ok) {
-      alert(&quot;회원가입 성공!&quot;);
-      Engine.play(&quot;Login&quot;);
-    } else {
-      alert(data.msg || &quot;회원가입 실패&quot;);
-    }
-  })
-  .catch(() =&gt; {
-    alert(&quot;서버 연결 실패&quot;);
-  });
-};
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="55" name="StoryCaption" tags="storycaption" position="600,725" size="100,100">&lt;div id=&quot;time-ui&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="56" name="StoryCaption" tags="storycaption" position="725,725" size="100,100">&lt;div id=&quot;time-ui&quot;&gt;
   &lt;b&gt;시간&lt;/b&gt;&lt;br&gt;
   &lt;&lt;print $day&gt;&gt;일\
   &lt;&lt;print $hour&gt;&gt;:&lt;&lt;print String($minute).padStart(2,&#39;0&#39;)&gt;&gt;
   &lt;&lt;print $season&gt;&gt;\
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="56" name="StoryMenu" tags="storymenu" position="725,725" size="100,100">[[관계]]
-[[스탯]]</tw-passagedata><tw-passagedata pid="57" name="StoryInit" tags="storyinit" position="850,725" size="100,100">&lt;&lt;set setup.uiBar = true&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="57" name="StoryMenu" tags="storymenu" position="850,725" size="100,100">[[관계]]
+[[스탯]]</tw-passagedata><tw-passagedata pid="58" name="StoryInit" tags="storyinit" position="975,725" size="100,100">&lt;&lt;set setup.uiBar = true&gt;&gt;
 &lt;&lt;set $day = 1&gt;&gt;
 &lt;&lt;set $hour = 8&gt;&gt;
 &lt;&lt;set $minute = 0&gt;&gt;
@@ -1027,7 +997,7 @@ window.doSignup = function () {
 &lt;&lt;set $emperorGender = &quot;male&quot;&gt;&gt;
 &lt;&lt;set $concubineGender = &quot;female&quot;&gt;&gt;
 
-&lt;!-- 후궁 첫 등장에 넣어야 할 로직</tw-passagedata><tw-passagedata pid="58" name="Init_Concubine" tags="" position="975,725" size="100,100">&lt;&lt;set $npc.concubine = {}&gt;&gt;
+&lt;!-- 후궁 첫 등장에 넣어야 할 로직</tw-passagedata><tw-passagedata pid="59" name="Init_Concubine" tags="" position="1100,725" size="100,100">&lt;&lt;set $npc.concubine = {}&gt;&gt;
 
 &lt;&lt;if $concubineGender == &quot;female&quot;&gt;&gt;
 	&lt;&lt;set $npc.concubine.gender = &quot;female&quot;&gt;&gt;
@@ -1040,11 +1010,11 @@ window.doSignup = function () {
 
 [[계속-&gt;ConcubineIntro]]
 
---&gt;</tw-passagedata><tw-passagedata pid="59" name="LoginCheck" tags="" position="1100,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
+--&gt;</tw-passagedata><tw-passagedata pid="60" name="LoginCheck" tags="" position="1225,725" size="100,100">&lt;&lt;if $isLogin&gt;&gt;
 	[[계속-&gt;MainMenu]]
 &lt;&lt;else&gt;&gt;
 	[[계속-&gt;Login]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="60" name="Login" tags="" position="1225,725" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="Login" tags="" position="100,850" size="100,100">&lt;h2&gt;로그인&lt;/h2&gt;
 
 &lt;&lt;script&gt;&gt;
 (function () {
@@ -1080,61 +1050,20 @@ GitHub Pages에서는 서버 기능이 제공되지 않습니다.&lt;br&gt;
 &lt;&lt;/button&gt;&gt;
 
 [[회원가입-&gt;Signup]]
-[[아이디 찾기-&gt;FindId]]
 
 &lt;&lt;/if&gt;&gt;
-
-&lt;&lt;script&gt;&gt;
-window.doLogin = function () {
-
-	// Pages에서는 절대 서버 호출 안 함
-	if (location.hostname.includes(&quot;github.io&quot;)) {
-		return;
-	}
-
-	const id = document.getElementById(&quot;login_id&quot;).value.trim();
-	const pw = document.getElementById(&quot;login_pw&quot;).value.trim();
-
-	if (!id || !pw) {
-		alert(&quot;아이디와 비밀번호를 입력하세요.&quot;);
-		return;
-	}
-
-	fetch(&quot;/myTwine/login.jsp&quot;, {
-		method: &quot;POST&quot;,
-		headers: {
-			&quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;
-		},
-		body: &quot;id=&quot; + encodeURIComponent(id) + &quot;&amp;pw=&quot; + encodeURIComponent(pw)
-	})
-	.then(res =&gt; {
-		if (!res.ok) throw new Error(&quot;HTTP &quot; + res.status);
-		return res.json();
-	})
-	.then(data =&gt; {
-		if (data.ok) {
-			State.variables.isLogin = true;
-			Engine.play(&quot;MainMenu&quot;);
-		} else {
-			alert(&quot;로그인 실패&quot;);
-		}
-	})
-	.catch(() =&gt; {
-		alert(&quot;서버 연결 실패&quot;);
-	});
-};
-&lt;&lt;/script&gt;&gt;</tw-passagedata><tw-passagedata pid="61" name="PagesEnter" tags="" position="100,850" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
-[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="62" name="MainMenu" tags="" position="225,850" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
+[[아이디 찾기-&gt;FindId]]</tw-passagedata><tw-passagedata pid="62" name="PagesEnter" tags="" position="225,850" size="100,100">&lt;&lt;set $isLogin = true&gt;&gt;
+[[게임 시작-&gt;MainMenu]]</tw-passagedata><tw-passagedata pid="63" name="MainMenu" tags="" position="350,850" size="100,100">&lt;h2&gt;메인 메뉴&lt;/h2&gt;
 
 (1) [[새 게임-&gt;NewGame]]  
-(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="63" name="NewGame" tags="" position="350,850" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
-[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="64" name="ContinueCheck" tags="" position="475,850" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
+(2) [[이어하기-&gt;ContinueCheck]]</tw-passagedata><tw-passagedata pid="64" name="NewGame" tags="" position="475,850" size="100,100">&lt;&lt;set $isNewGame = true&gt;&gt;
+[[시작-&gt;prologue]]</tw-passagedata><tw-passagedata pid="65" name="ContinueCheck" tags="" position="600,850" size="100,100">&lt;&lt;if $hasSave&gt;&gt;
 	[[이어하기-&gt;LoadGame]]
 &lt;&lt;else&gt;&gt;
 	저장된 데이터가 없습니다.&lt;br&gt;
 	자동으로 새 게임을 시작합니다.&lt;br&gt;&lt;br&gt;
 	[[시작-&gt;prologue]]
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="65" name="LoadGame" tags="" position="600,850" size="100,100">&lt;&lt;script&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="66" name="LoadGame" tags="" position="725,850" size="100,100">&lt;&lt;script&gt;&gt;
 /*
 서버 구현 예정:
 
@@ -1147,7 +1076,7 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 */
 &lt;&lt;/script&gt;&gt;
 
-[[계속-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="66" name="관계" tags="" position="725,850" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="67" name="PlayerInit" tags="system" position="850,850" size="100,100">&lt;!-- 난이도에 따른 스탯 --&gt;
+[[계속-&gt;MyPalace]]</tw-passagedata><tw-passagedata pid="67" name="관계" tags="" position="850,850" size="100,100">ㅇ</tw-passagedata><tw-passagedata pid="68" name="PlayerInit" tags="system" position="975,850" size="100,100">&lt;!-- 난이도에 따른 스탯 --&gt;
     &lt;&lt;if $Rank eq &quot;빈&quot;&gt;&gt;
         &lt;&lt;set $knowledge = 110&gt;&gt;
         &lt;&lt;set $music = 60&gt;&gt;
@@ -1257,7 +1186,7 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 &lt;&lt;if $my_palace is &quot;naniegung&quot;&gt;&gt;
 &lt;!--- 다른 이들과의 관계: 가까운 위치일수록 먼저 친해지고 시작&gt;
 &lt;!-- 위치에 따라 주목도 가감&gt;
-&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="68" name="스탯" tags="" position="975,850" size="100,100">&lt;&lt;print $knowledge&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="스탯" tags="" position="1100,850" size="100,100">&lt;&lt;print $knowledge&gt;&gt;
     &lt;&lt;print $music&gt;&gt;
     &lt;&lt;print $dance&gt;&gt;
     &lt;&lt;print $painting&gt;&gt;
@@ -1276,11 +1205,11 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
     &lt;&lt;print $morality&gt;&gt;
     &lt;&lt;print $attention&gt;&gt;
     &lt;&lt;print $money ? $money.silver : 0&gt;&gt;
-    &lt;&lt;print $money ? $money.gold : 0&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="TimeInit" tags="startup" position="1100,850" size="100,100">/* 일일 처리용 초기값 */
+    &lt;&lt;print $money ? $money.gold : 0&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="TimeInit" tags="startup" position="1225,850" size="100,100">/* 일일 처리용 초기값 */
 
 &lt;&lt;set $dailyAction = 0&gt;&gt;
 &lt;&lt;set $lastProcessedDay = 1&gt;&gt;
-&lt;&lt;set $isSleeping = false&gt;&gt;</tw-passagedata><tw-passagedata pid="70" name="TimeWidgets" tags="widget" position="1225,850" size="100,100">/* =========================
+&lt;&lt;set $isSleeping = false&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="TimeWidgets" tags="widget" position="100,975" size="100,100">/* =========================
    TIME ADD WIDGET
    ========================= */
 
@@ -1306,13 +1235,13 @@ fetch(&quot;/myTwine/loadGame.jsp&quot;)
 	&lt;&lt;/if&gt;&gt;
 
 	&lt;&lt;include &quot;CheckSeason&quot;&gt;&gt;
-&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="71" name="OnNewDay" tags="system" position="100,975" size="100,100">/* =========================
+&lt;&lt;/widget&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="OnNewDay" tags="system" position="225,975" size="100,100">/* =========================
    NEW DAY HOOK (NO OUTPUT)
    ========================= */
 
 &lt;&lt;set $dailyAction = 0&gt;&gt;
 &lt;&lt;set $isSleeping = false&gt;&gt;
-&lt;&lt;set $lastProcessedDay = $day&gt;&gt;</tw-passagedata><tw-passagedata pid="72" name="CheckSeason" tags="system" position="225,975" size="100,100">/* =========================
+&lt;&lt;set $lastProcessedDay = $day&gt;&gt;</tw-passagedata><tw-passagedata pid="73" name="CheckSeason" tags="system" position="350,975" size="100,100">/* =========================
    SEASON SYSTEM (120 days)
    ========================= */
 
