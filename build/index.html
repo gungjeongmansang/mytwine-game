@@ -830,6 +830,9 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 비밀번호
 &lt;input id=&quot;su_pw&quot; type=&quot;password&quot; style=&quot;width:100%;&quot;&gt;
 
+비밀번호 확인
+&lt;input id=&quot;su_pw_check&quot; type=&quot;password&quot; style=&quot;width:100%&quot;&gt;
+
 이메일
 &lt;input id=&quot;su_email&quot; type=&quot;email&quot; style=&quot;width:100%;&quot;&gt;
 
@@ -842,15 +845,20 @@ Rank: &lt;&lt;print $Rank&gt;&gt;
 &lt;/div&gt;
 
 &lt;&lt;script&gt;&gt;
-/* 회원가입 처리 함수 */
 window.doSignup = function () {
 
   const username = document.getElementById(&quot;su_username&quot;).value.trim();
   const pw = document.getElementById(&quot;su_pw&quot;).value.trim();
+  const pwCheck = document.getElementById(&quot;su_pw_check&quot;).value.trim();
   const email = document.getElementById(&quot;su_email&quot;).value.trim();
 
-  if (!username || !pw || !email) {
+  if (!username || !pw || !pwCheck || !email) {
     alert(&quot;모든 항목을 입력하세요.&quot;);
+    return;
+  }
+
+  if (pw !== pwCheck) {
+    alert(&quot;비밀번호가 일치하지 않습니다.&quot;);
     return;
   }
 
