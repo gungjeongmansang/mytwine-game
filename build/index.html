@@ -111,11 +111,12 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 #time-ui {
   font-size: 14px;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">(function () {
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// 키보드 입력 함수
+(function () {
 
     document.addEventListener("keydown", function (e) {
 
-        // 🔒 1️⃣ 입력 중이면 단축키 무시
+        // 입력 중이면 단축키 무시
         const active = document.activeElement;
         if (
             active &&
@@ -126,7 +127,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
             return;
         }
 
-        // 🔢 2️⃣ 숫자 1~9만 처리
+        // 숫자 1~9만 처리
         if (e.key >= "1" && e.key <= "9") {
             const index = parseInt(e.key, 10) - 1;
 
@@ -141,7 +142,120 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
         }
     });
 
-})();</script><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">**궁정만상(宮廷萬象): The Thousand Paths**
+})();
+
+// 로그인 함수
+window.doLogin = function () {
+
+	// Pages에서는 절대 서버 호출 안 함
+	if (location.hostname.includes("github.io")) {
+		return;
+	}
+
+	const id = document.getElementById("login_id").value.trim();
+	const pw = document.getElementById("login_pw").value.trim();
+
+	if (!id || !pw) {
+		alert("아이디와 비밀번호를 입력하세요.");
+		return;
+	}
+
+	fetch("/myTwine/login.jsp", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded"
+		},
+		body: "id=" + encodeURIComponent(id) + "&pw=" + encodeURIComponent(pw)
+	})
+	.then(res => {
+		if (!res.ok) throw new Error("HTTP " + res.status);
+		return res.json();
+	})
+	.then(data => {
+		if (data.ok) {
+			State.variables.isLogin = true;
+			Engine.play("MainMenu");
+		} else {
+			alert("로그인 실패");
+		}
+	})
+	.catch(() => {
+		alert("서버 연결 실패");
+	});
+};
+
+// 회원가입 함수
+window.doSignup = function () {
+
+  const username = document.getElementById("su_username").value.trim();
+  const pw = document.getElementById("su_pw").value.trim();
+  const pwCheck = document.getElementById("su_pw_check").value.trim();
+  const email = document.getElementById("su_email").value.trim();
+
+  if (!username || !pw || !pwCheck || !email) {
+    alert("모든 항목을 입력하세요.");
+    return;
+  }
+
+  if (pw !== pwCheck) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+
+  fetch("/myTwine/signup.jsp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body:
+      "username=" + encodeURIComponent(username) +
+      "&pw=" + encodeURIComponent(pw) +
+      "&email=" + encodeURIComponent(email)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok) {
+      alert("회원가입 성공!");
+      Engine.play("Login");
+    } else {
+      alert(data.msg || "회원가입 실패");
+    }
+  })
+  .catch(() => {
+    alert("서버 연결 실패");
+  });
+};
+
+
+// 아이디 찾기 함수
+window.findId = function () {
+
+  const email = document.getElementById("find_email").value.trim();
+
+  if (!email) {
+    alert("이메일을 입력하세요.");
+    return;
+  }
+
+  fetch("/myTwine/findId.jsp", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: "email=" + encodeURIComponent(email)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok) {
+      alert("당신의 아이디는: " + data.username);
+    } else {
+      alert(data.msg || "아이디를 찾을 수 없습니다.");
+    }
+  })
+  .catch(() => {
+    alert("서버 연결 실패");
+  });
+};</script><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">**궁정만상(宮廷萬象): The Thousand Paths**
 
 황궁은 하나의 세계이며, 그 안에는 수만 개의 삶과 결말이 공존합니다.
 당신은 새로 입궁한 후궁으로서 황궁에 첫 발걸음을 내딛었습니다. 
@@ -966,6 +1080,7 @@ GitHub Pages에서는 서버 기능이 제공되지 않습니다.&lt;br&gt;
 &lt;&lt;/button&gt;&gt;
 
 [[회원가입-&gt;Signup]]
+[[아이디 찾기-&gt;FindId]]
 
 &lt;&lt;/if&gt;&gt;
 
