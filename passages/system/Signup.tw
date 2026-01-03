@@ -9,6 +9,9 @@
 비밀번호
 <input id="su_pw" type="password" style="width:100%;">
 
+비밀번호 확인
+<input id="su_pw_check" type="password" style="width:100%">
+
 이메일
 <input id="su_email" type="email" style="width:100%;">
 
@@ -21,15 +24,20 @@
 </div>
 
 <<script>>
-/* 회원가입 처리 함수 */
 window.doSignup = function () {
 
   const username = document.getElementById("su_username").value.trim();
   const pw = document.getElementById("su_pw").value.trim();
+  const pwCheck = document.getElementById("su_pw_check").value.trim();
   const email = document.getElementById("su_email").value.trim();
 
-  if (!username || !pw || !email) {
+  if (!username || !pw || !pwCheck || !email) {
     alert("모든 항목을 입력하세요.");
+    return;
+  }
+
+  if (pw !== pwCheck) {
+    alert("비밀번호가 일치하지 않습니다.");
     return;
   }
 
