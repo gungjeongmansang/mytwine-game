@@ -123,8 +123,11 @@
 보잘것없는 후궁의 삶보다 더 볼품없는 황제의 하룻밤 상대로서, 당신은 배정된 궁조차 없습니다.
 </p>
 
-<br>
-[[설정 완료->Setup_StartPalace]]
+<<if $Rank != "">>
+  [[설정 완료->Setup_StartPalace]]
+<<else>>
+  <span style="color:#888;">※ 품계를 선택해야 진행할 수 있습니다.</span>
+<</if>>
 
 
 :: Setup_StartPalace
@@ -198,8 +201,11 @@
 이제 막 입궁한 당신에게 있어 정화궁만한 선택지는 없을 것입니다. 
 </p>
 
-<br>
-[[플레이어 성별 설정->Setup_PlayerGender]]
+<<if $my_palace != "">>
+	[[플레이어 성별 설정->Setup_PlayerGender]]
+<<else>>
+	<span style="color:#888;">※ 거처를 선택해야 진행할 수 있습니다.</span>
+<</if>>
 
 
 /*
@@ -213,7 +219,11 @@
   <<radiobutton "$playerGender" "female">> 여성
   <<radiobutton "$playerGender" "male">> 남성
 
-[[황제 성별 설정->Setup_EmperorGender]]
+<<if $playerGender != "">>
+	[[황제 성별 설정->Setup_EmperorGender]]
+<<else>>
+	<span style="color:#888;">※ 성별을 선택하세요.</span>
+<</if>>
 
 :: Setup_EmperorGender
 <h2>황제 성별 설정</h2>
@@ -230,9 +240,12 @@
   <<radiobutton "$concubineGender" "mixed">> 혼합
 <br>
 
-[[황궁에 들어선다->PlayerInit]]
-
-[[황궁에 들어서기 전 설명을 듣는다->explanation]]
+<<if $concubineGender != "">>
+  [[황궁에 들어선다->PlayerInit]]
+  [[황궁에 들어서기 전 설명을 듣는다->explanation]]
+<<else>>
+	<span style="color:#888;">※ 후궁 성별 구성을 선택해야 합니다.</span>
+<</if>>
 
 :: explanation
 
