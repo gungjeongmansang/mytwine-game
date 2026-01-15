@@ -222,6 +222,8 @@
 따로 정할 예정
 */
 :: Setup_PlayerGender
+<<set $playerGender = $playerGender or "">>
+
 <h2>플레이어 성별 설정</h2>
   <<radiobutton "$playerGender" "female">> 여성
   <<radiobutton "$playerGender" "male">> 남성
@@ -237,6 +239,8 @@
 <</link>>
 
 :: Setup_EmperorGender
+<<set $emperorGender = $emperorGender or "">>
+
 <h2>황제 성별 설정</h2>
   <<radiobutton "$emperorGender" "female">> 여성
   <<radiobutton "$emperorGender" "male">> 남성
@@ -252,6 +256,8 @@
 <</link>>
 
 :: Setup_ConcubineGender
+<<set $concubineGender = $concubineGender or "">>
+
 <h2>후궁 성별 설정</h2>
 <!--여자, 남자 일괄, 혼합으로 해놨는데 수정하려면 할 수 있음-->
   <<radiobutton "$concubineGender" "female">> 여성 후궁만 등장
