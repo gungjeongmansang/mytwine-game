@@ -123,12 +123,15 @@
 보잘것없는 후궁의 삶보다 더 볼품없는 황제의 하룻밤 상대로서, 당신은 배정된 궁조차 없습니다.
 </p>
 
-<<if $Rank != "">>
-  [[설정 완료->Setup_StartPalace]]
-<<else>>
-  <span style="color:#888;">※ 품계를 선택해야 진행할 수 있습니다.</span>
-<</if>>
-
+<<link "설정 완료">>
+  <<if $Rank == "">>
+    <<script>>
+      alert("입궁 품계를 선택해주세요.");
+    <</script>>
+  <<else>>
+    <<goto "Setup_StartPalace">>
+  <</if>>
+<</link>>
 
 :: Setup_StartPalace
 
@@ -201,11 +204,15 @@
 이제 막 입궁한 당신에게 있어 정화궁만한 선택지는 없을 것입니다. 
 </p>
 
-<<if $my_palace != "">>
-	[[플레이어 성별 설정->Setup_PlayerGender]]
-<<else>>
-	<span style="color:#888;">※ 거처를 선택해야 진행할 수 있습니다.</span>
-<</if>>
+<<link "플레이어 성별 설정">>
+	<<if $my_palace == "">>
+		<<script>>
+			alert("입궁 거처를 선택해주세요.");
+		<</script>>
+	<<else>>
+		<<goto "Setup_PlayerGender">>
+	<</if>>
+<</link>>
 
 
 /*
@@ -219,18 +226,30 @@
   <<radiobutton "$playerGender" "female">> 여성
   <<radiobutton "$playerGender" "male">> 남성
 
-<<if $playerGender != "">>
-	[[황제 성별 설정->Setup_EmperorGender]]
-<<else>>
-	<span style="color:#888;">※ 성별을 선택하세요.</span>
-<</if>>
+<<link "황제 성별 설정">>
+	<<if $playerGender == "">>
+		<<script>>
+			alert("플레이어 성별을 선택해주세요.");
+		<</script>>
+	<<else>>
+		<<goto "Setup_EmperorGender">>
+	<</if>>
+<</link>>
 
 :: Setup_EmperorGender
 <h2>황제 성별 설정</h2>
   <<radiobutton "$emperorGender" "female">> 여성
   <<radiobutton "$emperorGender" "male">> 남성
 
-[[후궁 성별 설정->Setup_ConcubineGender]]
+  <<link "후궁 성별 설정">>
+	<<if $emperorGender == "">>
+		<<script>>
+			alert("황제 성별을 선택해주세요.");
+		<</script>>
+	<<else>>
+		<<goto "Setup_ConcubineGender">>
+	<</if>>
+<</link>>
 
 :: Setup_ConcubineGender
 <h2>후궁 성별 설정</h2>
@@ -240,12 +259,16 @@
   <<radiobutton "$concubineGender" "mixed">> 혼합
 <br>
 
-<<if $concubineGender != "">>
-  [[황궁에 들어선다->PlayerInit]]
-  [[황궁에 들어서기 전 설명을 듣는다->explanation]]
-<<else>>
-	<span style="color:#888;">※ 후궁 성별 구성을 선택해야 합니다.</span>
-<</if>>
+
+<<link "황궁에 들어서기 전 설명을 듣는다">>
+	<<if $concubineGender == "">>
+		<<script>>
+			alert("후궁 성별 구성을 선택해주세요.");
+		<</script>>
+	<<else>>
+		<<goto "explanation">>
+	<</if>>
+<</link>>
 
 :: explanation
 

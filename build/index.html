@@ -363,8 +363,11 @@ window.findId = function () {
 보잘것없는 후궁의 삶보다 더 볼품없는 황제의 하룻밤 상대로서, 당신은 배정된 궁조차 없습니다.
 &lt;/p&gt;
 
-&lt;br&gt;
-[[설정 완료-&gt;Setup_StartPalace]]</tw-passagedata><tw-passagedata pid="4" name="Setup_StartPalace" tags="" position="475,100" size="100,100">&lt;&lt;set $my_palace = &quot;&quot;&gt;&gt;
+&lt;&lt;if $Rank != &quot;&quot;&gt;&gt;
+  [[설정 완료-&gt;Setup_StartPalace]]
+&lt;&lt;else&gt;&gt;
+  &lt;span style=&quot;color:#888;&quot;&gt;※ 품계를 선택해야 진행할 수 있습니다.&lt;/span&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="Setup_StartPalace" tags="" position="475,100" size="100,100">&lt;&lt;set $my_palace = &quot;&quot;&gt;&gt;
 
 &lt;h2 style=&quot;margin:0;&quot;&gt;초기 설정&lt;/h2&gt;
 &lt;h3 style=&quot;margin:0;&quot;&gt;입궁 거처&lt;/h3&gt;
@@ -433,8 +436,11 @@ window.findId = function () {
 이제 막 입궁한 당신에게 있어 정화궁만한 선택지는 없을 것입니다. 
 &lt;/p&gt;
 
-&lt;br&gt;
-[[플레이어 성별 설정-&gt;Setup_PlayerGender]]
+&lt;&lt;if $my_palace != &quot;&quot;&gt;&gt;
+	[[플레이어 성별 설정-&gt;Setup_PlayerGender]]
+&lt;&lt;else&gt;&gt;
+	&lt;span style=&quot;color:#888;&quot;&gt;※ 거처를 선택해야 진행할 수 있습니다.&lt;/span&gt;
+&lt;&lt;/if&gt;&gt;
 
 
 /*
@@ -446,7 +452,11 @@ window.findId = function () {
   &lt;&lt;radiobutton &quot;$playerGender&quot; &quot;female&quot;&gt;&gt; 여성
   &lt;&lt;radiobutton &quot;$playerGender&quot; &quot;male&quot;&gt;&gt; 남성
 
-[[황제 성별 설정-&gt;Setup_EmperorGender]]</tw-passagedata><tw-passagedata pid="6" name="Setup_EmperorGender" tags="" position="725,100" size="100,100">&lt;h2&gt;황제 성별 설정&lt;/h2&gt;
+&lt;&lt;if $playerGender != &quot;&quot;&gt;&gt;
+	[[황제 성별 설정-&gt;Setup_EmperorGender]]
+&lt;&lt;else&gt;&gt;
+	&lt;span style=&quot;color:#888;&quot;&gt;※ 성별을 선택하세요.&lt;/span&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Setup_EmperorGender" tags="" position="725,100" size="100,100">&lt;h2&gt;황제 성별 설정&lt;/h2&gt;
   &lt;&lt;radiobutton &quot;$emperorGender&quot; &quot;female&quot;&gt;&gt; 여성
   &lt;&lt;radiobutton &quot;$emperorGender&quot; &quot;male&quot;&gt;&gt; 남성
 
@@ -457,9 +467,12 @@ window.findId = function () {
   &lt;&lt;radiobutton &quot;$concubineGender&quot; &quot;mixed&quot;&gt;&gt; 혼합
 &lt;br&gt;
 
-[[황궁에 들어선다-&gt;PlayerInit]]
-
-[[황궁에 들어서기 전 설명을 듣는다-&gt;explanation]]</tw-passagedata><tw-passagedata pid="8" name="explanation" tags="" position="975,100" size="100,100">당신은 앞으로 &lt;&lt;print $my_palace&gt;&gt;에 기거하는 황제의 후궁으로서 살아가게 될 것입니다.
+&lt;&lt;if $concubineGender != &quot;&quot;&gt;&gt;
+  [[황궁에 들어선다-&gt;PlayerInit]]
+  [[황궁에 들어서기 전 설명을 듣는다-&gt;explanation]]
+&lt;&lt;else&gt;&gt;
+	&lt;span style=&quot;color:#888;&quot;&gt;※ 후궁 성별 구성을 선택해야 합니다.&lt;/span&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="explanation" tags="" position="975,100" size="100,100">당신은 앞으로 &lt;&lt;print $my_palace&gt;&gt;에 기거하는 황제의 후궁으로서 살아가게 될 것입니다.
 &lt;&lt;print $my_palace&gt;&gt;에 대해 간단히 설명하자면 이렇습니다.
 
 후궁들이 기거하는 궁의 내부에는 크게 전전(前殿)과 후전(後殿), 배전(配殿)이 있습니다.
