@@ -456,7 +456,9 @@ window.findId = function () {
 나를 포함한 사람들의 성별 설정
 경우에 따한 나와 무조건 반대 또는 나와 무조건 같은 성별이 나오게끔 하는 인물은
 따로 정할 예정
-*/</tw-passagedata><tw-passagedata pid="5" name="Setup_PlayerGender" tags="" position="600,100" size="100,100">&lt;h2&gt;플레이어 성별 설정&lt;/h2&gt;
+*/</tw-passagedata><tw-passagedata pid="5" name="Setup_PlayerGender" tags="" position="600,100" size="100,100">&lt;&lt;set $playerGender = $playerGender or &quot;&quot;&gt;&gt;
+
+&lt;h2&gt;플레이어 성별 설정&lt;/h2&gt;
   &lt;&lt;radiobutton &quot;$playerGender&quot; &quot;female&quot;&gt;&gt; 여성
   &lt;&lt;radiobutton &quot;$playerGender&quot; &quot;male&quot;&gt;&gt; 남성
 
@@ -468,7 +470,9 @@ window.findId = function () {
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;goto &quot;Setup_EmperorGender&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Setup_EmperorGender" tags="" position="725,100" size="100,100">&lt;h2&gt;황제 성별 설정&lt;/h2&gt;
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="Setup_EmperorGender" tags="" position="725,100" size="100,100">&lt;&lt;set $emperorGender = $emperorGender or &quot;&quot;&gt;&gt;
+
+&lt;h2&gt;황제 성별 설정&lt;/h2&gt;
   &lt;&lt;radiobutton &quot;$emperorGender&quot; &quot;female&quot;&gt;&gt; 여성
   &lt;&lt;radiobutton &quot;$emperorGender&quot; &quot;male&quot;&gt;&gt; 남성
 
@@ -480,7 +484,9 @@ window.findId = function () {
 	&lt;&lt;else&gt;&gt;
 		&lt;&lt;goto &quot;Setup_ConcubineGender&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Setup_ConcubineGender" tags="" position="850,100" size="100,100">&lt;h2&gt;후궁 성별 설정&lt;/h2&gt;
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Setup_ConcubineGender" tags="" position="850,100" size="100,100">&lt;&lt;set $concubineGender = $concubineGender or &quot;&quot;&gt;&gt;
+
+&lt;h2&gt;후궁 성별 설정&lt;/h2&gt;
 &lt;!--여자, 남자 일괄, 혼합으로 해놨는데 수정하려면 할 수 있음--&gt;
   &lt;&lt;radiobutton &quot;$concubineGender&quot; &quot;female&quot;&gt;&gt; 여성 후궁만 등장
   &lt;&lt;radiobutton &quot;$concubineGender&quot; &quot;male&quot;&gt;&gt; 남성 후궁만 등장
