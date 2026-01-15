@@ -17,9 +17,9 @@
 }>>
 
 <!--성별 기본값(순서대로 플레이어, 황제, 후궁)-->
-<<set $playerGender = "female">>
-<<set $emperorGender = "male">>
-<<set $concubineGender = "female">>
+<<set $playerGender = "">>
+<<set $emperorGender = "">>
+<<set $concubineGender = "">>
 
 <!-- 후궁 첫 등장에 넣어야 할 로직
 :: Init_Concubine
